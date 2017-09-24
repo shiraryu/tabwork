@@ -1,0 +1,20 @@
+<div class = "container">
+  <div class = "col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <br>
+    <h5 style = "text-decoration:underline">確認</h5>
+    <%= form_for(@workplace)do |f| %>
+      <%= f.hidden_field :name %>
+      <br>
+      <p>現場名:　<%= @workplace.name %></p>
+      <br>
+      <%= f.submit "送信",class:'btn btn-default btn-sm' %>
+      <br>
+      <br>
+    <% end %>
+
+    <%= form_for(@workplace,url: new_workplace_path,method: 'get') do |f| %>
+      <%= f.hidden_field :name %>
+      <%= f.submit "戻る", name: 'back',class:'btn btn-default btn-sm' %>
+    <% end %>
+  </div>
+</div>
