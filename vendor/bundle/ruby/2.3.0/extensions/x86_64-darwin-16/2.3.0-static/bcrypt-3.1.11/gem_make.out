@@ -1,0 +1,21 @@
+current directory: /Users/shiraishiryuji/workspace/tabwork/vendor/bundle/ruby/2.3.0/gems/bcrypt-3.1.11/ext/mri
+/Users/shiraishiryuji/.rbenv/versions/2.3.0/bin/ruby -r ./siteconf20170926-96370-1n3q6kw.rb extconf.rb
+creating Makefile
+
+current directory: /Users/shiraishiryuji/workspace/tabwork/vendor/bundle/ruby/2.3.0/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR=" clean
+
+
+Agreeing to the Xcode/iOS license requires admin privileges, please run “sudo xcodebuild -license” and then retry this command.
+
+
+
+current directory: /Users/shiraishiryuji/workspace/tabwork/vendor/bundle/ruby/2.3.0/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR="
+
+
+Agreeing to the Xcode/iOS license requires admin privileges, please run “sudo xcodebuild -license” and then retry this command.
+
+
+
+make failed, exit code 69

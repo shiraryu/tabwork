@@ -1,4 +1,5 @@
 class WorkplacesController < ApplicationController
+  before_action :authenticate_user!        #ログイン有無のチェック
   before_action :set_workplace,only:[:edit,:update,:destroy]
 
   def index

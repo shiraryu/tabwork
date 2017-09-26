@@ -1,0 +1,71 @@
+ce6ae3876e4b23b7387637d6416ad808d1dd3d31		branch 'add-json-generic-object-loader-dumper' of git://github.com/flori/json
+82a56b631e02465d5d14a2bafb1ad3b9983daf4a		branch 'be-compatible-with-ruby-2.2.1' of git://github.com/flori/json
+c3fd3d60f668d7d2b9a0e837d4877300e5674648		branch 'brixen-master' of git://github.com/flori/json
+79fa7f352bae842017c885101a556875600fb468		branch 'fix-additions-problem-v1.5.5' of git://github.com/flori/json
+3ce359bbf308354b86e94248fc13dfd4b23c792e		branch 'fix-additions-problem-v1.6.8' of git://github.com/flori/json
+d85896768c0276cec317fa0851a46845e68dfacc		branch 'gh-pages' of git://github.com/flori/json
+00cb1bce00254249d1e312da885b89cd8f2e0299		branch 'jruby-fix-encoding' of git://github.com/flori/json
+01a5165bee5c8cf199e37b3ccc90f1f824d41783		branch 'json-generic-from_hashes' of git://github.com/flori/json
+e06ad630a702143556cf9e6e5d3749c56b0c3eed		branch 'luislavena-stop-polluting-load-path' of git://github.com/flori/json
+76c2da6656e9f99de50645aa26049bfab705c303		branch 'master' of git://github.com/flori/json
+ed1a973d602b8e81be696a784e74a988646b674b		branch 'nobu-master' of git://github.com/flori/json
+c44aed0bda513d9d54f695eda8469976ba5dfda5		branch 'nobu-trunk' of git://github.com/flori/json
+d76588541a65fd7c56e5c990fb7ba39eabeef277		branch 'raise-error-on-invalid-utf8' of git://github.com/flori/json
+23d86cde3397dd6a3b59cd0534ea8c066054af10		branch 'replace-nan' of git://github.com/flori/json
+bf8ef07bf3cf0fe7126b029b888e4054116c7c09		branch 'rfc-7159-json' of git://github.com/flori/json
+86128f517d01a3ececd640634e8f6acbda88dbc1		branch 'sferik-max_nesting' of git://github.com/flori/json
+7f4cfd853f2c919d854fb95548a19980feff17e8		branch 'v1.8' of git://github.com/flori/json
+09fabeb03e73ed88dc8ce8f19d76ac59e51dae20		branch 'v2.0' of git://github.com/flori/json
+fde9036047e6d3e0771507a111f07793a7a26761		branch 'workaround-rbx-encoding-issues' of git://github.com/flori/json
+302c96471afb002c3418bc7a31141ff783a50e95		branch 'zzak-ruby-2.2' of git://github.com/flori/json
+8f41606a9fab1803c1b8b43c6c4590eb41725105	not-for-merge	tag 'v1.1.8' of git://github.com/flori/json
+4879896ec1fd05ec368208adc402afa9d2f0150d	not-for-merge	tag 'v1.1.9' of git://github.com/flori/json
+9080fd0e3dfb1a102d6d53c0ebf08068d47f8f44	not-for-merge	tag 'v1.2.0' of git://github.com/flori/json
+f4947c57a3e4ccb60e700e26d688f2e781c4dbce	not-for-merge	tag 'v1.2.1' of git://github.com/flori/json
+3e980d562b27130f984be945fa68120d8aea757e	not-for-merge	tag 'v1.2.2' of git://github.com/flori/json
+a7f87afc829694b8f7f54cc26b83ce8a8eb76fd3	not-for-merge	tag 'v1.2.3' of git://github.com/flori/json
+f181a5e27ec70a8e4d64ab3278a04f6eb6660a6f	not-for-merge	tag 'v1.2.4' of git://github.com/flori/json
+487c5d6f302089a8abab69406262d700840fa342	not-for-merge	tag 'v1.4.0' of git://github.com/flori/json
+408e2e99b82d651d67ba31fa6094b375baf2a481	not-for-merge	tag 'v1.4.1' of git://github.com/flori/json
+073ec86752c2c68decccfd6add26728b81a1cba2	not-for-merge	tag 'v1.4.2' of git://github.com/flori/json
+7d6db69529e9eacccf45f68d71a239628aa11e97	not-for-merge	tag 'v1.4.3' of git://github.com/flori/json
+c1e80964ac3a1ca310297ce81a8f6c6111c07b43	not-for-merge	tag 'v1.4.4' of git://github.com/flori/json
+8838247c3e60873d5169e2dd06a2b604552a65d7	not-for-merge	tag 'v1.4.4-java' of git://github.com/flori/json
+ff91f767325df682d512b6d588b409176d4e8d2f	not-for-merge	tag 'v1.4.5' of git://github.com/flori/json
+c469a02e2dca0fedf327318ecdd2cd09d7a7cb79	not-for-merge	tag 'v1.4.6' of git://github.com/flori/json
+844949a5b5266aac172bdc702b98754ad08811cf	not-for-merge	tag 'v1.4.6-java' of git://github.com/flori/json
+655f591dd003ec3265464e8c9e1d9a2ca2a3ff92	not-for-merge	tag 'v1.5.0' of git://github.com/flori/json
+c04897ee03f1c181e5d3a1645c5cbb943358c52e	not-for-merge	tag 'v1.5.1' of git://github.com/flori/json
+c80abb2d53720ed47b39728dce03694fe7e293e7	not-for-merge	tag 'v1.5.2' of git://github.com/flori/json
+c93ef4e4d7c0f7b0e66402cd0a07032f7078372a	not-for-merge	tag 'v1.5.3' of git://github.com/flori/json
+3dab4c5a6a97fac03dacf19446b9ff2a6b397591	not-for-merge	tag 'v1.5.4' of git://github.com/flori/json
+79fa7f352bae842017c885101a556875600fb468	not-for-merge	tag 'v1.5.5' of git://github.com/flori/json
+f729d47aefc98623677142de62f6211feeacb116	not-for-merge	tag 'v1.6.0' of git://github.com/flori/json
+56987b27d53765a57b20a0f2611b44a343616e09	not-for-merge	tag 'v1.6.1' of git://github.com/flori/json
+b0ee15f984e3ff056f646d253b142c3e47a35e0f	not-for-merge	tag 'v1.6.2' of git://github.com/flori/json
+e7927d3f04973d8ed1618215c3750aebf80681d4	not-for-merge	tag 'v1.6.3' of git://github.com/flori/json
+0b69a8d9efec731649f93aeee9bea4b6b348868b	not-for-merge	tag 'v1.6.4' of git://github.com/flori/json
+29e88befe5335134d03e91f9943fc7fe9732da71	not-for-merge	tag 'v1.6.5' of git://github.com/flori/json
+eecce2277ed0c720077da789088bd7383b929069	not-for-merge	tag 'v1.6.6' of git://github.com/flori/json
+93b31b8b588461901ed5ae0dc4e961ea3adbc55e	not-for-merge	tag 'v1.6.7' of git://github.com/flori/json
+3ce359bbf308354b86e94248fc13dfd4b23c792e	not-for-merge	tag 'v1.6.8' of git://github.com/flori/json
+99ed91c380e0719cf377616d2f9ca87e24e97057	not-for-merge	tag 'v1.7.0' of git://github.com/flori/json
+e5b9a9465c1159fae533bca320d950b772bcb4ac	not-for-merge	tag 'v1.7.1' of git://github.com/flori/json
+998d5cdeabea8bfbbf9c941e1c304fcb4454d726	not-for-merge	tag 'v1.7.2' of git://github.com/flori/json
+c1320061ae68a4695d72ce287373ff1e2e2f0022	not-for-merge	tag 'v1.7.3' of git://github.com/flori/json
+33dce921d892423956bb22dc3045eb7463242f52	not-for-merge	tag 'v1.7.4' of git://github.com/flori/json
+0d8c4b944ba49df57ffb69d81179d2ae949cd51d	not-for-merge	tag 'v1.7.5' of git://github.com/flori/json
+955e87bc2647c9cf28d0b1e61d1db5c886462850	not-for-merge	tag 'v1.7.6' of git://github.com/flori/json
+d0a62f3ced7560daba2ad546d83f0479a5ae2cf2	not-for-merge	tag 'v1.7.7' of git://github.com/flori/json
+e6f3fdc135f10458e090201fbb15fafbaa166a0d	not-for-merge	tag 'v1.8.0' of git://github.com/flori/json
+92a96dea2b24b9c68856004d69491f46aedd0925	not-for-merge	tag 'v1.8.1' of git://github.com/flori/json
+259dee6c9bdda08ed0c1fc2e69bfbb2d377faba0	not-for-merge	tag 'v1.8.2' of git://github.com/flori/json
+db4c71a7701b95c30f945ee1536240920dcfdc17	not-for-merge	tag 'v1.8.3' of git://github.com/flori/json
+4cf6c6270f52888997ec1b626b9f557db4f26f2e	not-for-merge	tag 'v1.8.5' of git://github.com/flori/json
+7f4cfd853f2c919d854fb95548a19980feff17e8	not-for-merge	tag 'v1.8.6' of git://github.com/flori/json
+1c2901905c938ffd19620cc6a06cbb2b34d8ba05	not-for-merge	tag 'v2.0.0' of git://github.com/flori/json
+f679ebd0c69a94e3e70a897ac9a229f5779c2ee1	not-for-merge	tag 'v2.0.1' of git://github.com/flori/json
+f1ca4fed316ad416ae718544623865aca4231a08	not-for-merge	tag 'v2.0.2' of git://github.com/flori/json
+44b392b5ede944f73cfbdf65afb9d4dd972e23f5	not-for-merge	tag 'v2.0.3' of git://github.com/flori/json
+09fabeb03e73ed88dc8ce8f19d76ac59e51dae20	not-for-merge	tag 'v2.0.4' of git://github.com/flori/json
+4688035c424a26a8d943c261170988f1b788fa56	not-for-merge	tag 'v2.1.0' of git://github.com/flori/json
