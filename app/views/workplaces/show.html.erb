@@ -1,0 +1,20 @@
+<p id = "notice"><%= notice %></p>
+<div class = "child row">
+  <div class = "wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <div class = "workplace-text">
+      <p class = "left"><strong>現場名</strong></p>
+      <p class = "leftname"><%= @workplace.name %></p>
+      <br>
+    </div>
+    <br>
+    <br>
+    <br>
+    <p><strong>工事一覧</strong></p>
+    <div id = "constructions_area">
+      <%= render partial: 'constructions/index',locals:{constructions: @constructions,workplace: @workplace} %>
+    </div>
+    <%= render partial: 'constructions/form',locals:{construction: @construction,workplace: @workplace} %>
+    <br>
+    <%= link_to'戻る',workplaces_path %>
+  </div>
+</div>

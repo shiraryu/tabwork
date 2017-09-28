@@ -1,6 +1,6 @@
 class WorkplacesController < ApplicationController
   before_action :authenticate_user!        #ログイン有無のチェック
-  before_action :set_workplace,only:[:edit,:update,:destroy]
+  before_action :set_workplace,only:[:show,:edit,:update,:destroy]
 
   def index
     @workplaces = Workplace.all
@@ -41,6 +41,8 @@ class WorkplacesController < ApplicationController
   end
 
   def show
+    @construction = @workplace.constructions.build   # 入力フォーム用インスタンス
+    @constructions = @workplace.constructions        # 一覧用インスタンス
   end
 
   def confirm

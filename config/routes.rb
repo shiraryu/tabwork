@@ -4,14 +4,22 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :workplaces do
-    collection do
-      post :confirm
-    end
+    resources :constructions
+    post :confirm ,on: :collection
   end
+
+  resources :users,only:[:index,:show]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine,at:'/letter_opener'
   end
 
-  
+  authenticated :user do                                                 # Userがログイン中はtopic一覧をtop画面とする設定
+    root :to => "workplaces#index", :as => "user_authenticated_root"
+  end
+
+  devise_scope :user do                                                  # User非ログイン中はサインアップ画面をtop画面とする設定
+    root :to => "users/registrations#new"                                # RegistrationsControllerのnew.html.erbに飛ばしている
+  end
+
 end

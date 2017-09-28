@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>社員一覧</h2>
+  <% @users.each do |user| %>
+  <% if user.id != current_user.id %>
+    <li style = "list-style-type: none;">
+      <div class="item">
+        <%= link_to user.name, user %>
+      </div>
+    </li>
+  <% end %>
+  <br>
+  <% end %>
+</div>

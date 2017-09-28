@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>勤怠管理</title>
+  <title>TABLICK</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="cb-materialbtn.min.css">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">     <!-- mobile対応(スマホ&タブレット) -->
@@ -14,17 +15,16 @@
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header"style=width:100%;">
-          <%= link_to "タブリック", class: "navbar-brand" %>
+          <%= link_to "TABLICK",root_path,class: "navbar-brand" %>
           <div class = "header-container"style=width:100%;">
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown"style="max-width: 100px;float: right;">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">menu<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MENU<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to "新規投稿" %></li>
-                  <li><%= link_to "トピック" %></li>
-                  <li><%= link_to "メッセージ" %></li>
+                  <li><%= link_to "社員登録" %></li>
+                  <li><%= link_to "現場/工事管理",workplaces_path %></li>
                   <% if user_signed_in? %>
-                    <li><%= link_to 'ユーザー一覧' %></li>
+                    <li><%= link_to '社員一覧', users_path %></li>
                     <li><%= link_to 'マイページ', edit_user_registration_path %></li>
                     <li><%= link_to'ログアウト',destroy_user_session_path,method: :delete %></li>
                   <% else %>

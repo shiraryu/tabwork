@@ -57,3 +57,7 @@ gem 'rails_admin'
 gem 'cancan'
 gem 'activeresource'
 gem 'dotenv-rails'
+# image uploader
+gem 'carrierwave'
+gem 'mini_magick' #画像サイズ変更
+gem 'faker'

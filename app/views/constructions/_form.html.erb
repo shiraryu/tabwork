@@ -1,0 +1,12 @@
+<%= form_for([workplace,construction],remote: true) do |f| %>   <!-- remote: trueでAjyax使用 -->
+  <%= f.hidden_field :workplace_id %>
+  <div class="field">
+    <br>
+    <%= f.text_field :name, placeholder: "工事名入力", class: "form-control"  %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit "登録する" %>
+  </div>
+  <br>
+<% end %>

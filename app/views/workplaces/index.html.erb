@@ -2,15 +2,20 @@
   <div class = "wrapper col-md-12 col-sm-10">
   <p> <%= notice %> </p>
 
-  <h1>現場一覧</h1>
-
-    <%= link_to "新規登録",new_workplace_path %>
-
+  <h3>現場一覧</h3>
+  <br>
+    <%= link_to "新規登録",new_workplace_path,class:'btn btn-default yellow600_rsd btn-sm' 'style=font-size:15px;' %>
+    <br>
+    <br>
     <% @workplaces.each do |workplace| %>
-      <p><%= workplace.name %></p>
       <br>
-      <%= link_to "編集",edit_workplace_path(workplace.id),class:'btn btn-default btn-sm btn-success' %>
-      <%= link_to "削除", workplace_path(workplace.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn-danger' %>
+      <br>
+      <%= link_to workplace_path(workplace) do %>
+        <h4><%= workplace.name %></h4>
+      <% end %>
+      <br>
+      <%= link_to "編集",edit_workplace_path(workplace.id),class:'btn btn-default white_rsd btn-sm' %>
+      <%= link_to "削除", workplace_path(workplace.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-black_rsd btn-sm' %>
     <% end %>
   </div>
   <div id="page-top-btn" class="page-top-btn">

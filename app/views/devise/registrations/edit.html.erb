@@ -20,44 +20,35 @@
         <br>
       </div>
       <br>
-      <% if @user.provider.blank? %>
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-        <% end %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
 
-        <div class="field">
-          <%= f.label :password %><br /><i>(変更したくない場合は空白のままにしてください)</i>
-           <% if @minimum_password_length %>
+      <div class="field">
+        <%= f.label :password %><br /><i>(変更したくない場合は空白のままにしてください)</i>
+          <% if @minimum_password_length %>
             <br />
             <em>※<%= @minimum_password_length %>文字以上</em><br />
           <% end %>
-          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-          <br>
-        </div>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+        <br>
+      </div>
 
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-          <br>
-        </div>
-
-        <div class="field">
-          <%= f.label :現在のパスワード %> <br />
-          <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
-          <br>
-        </div>
-      <% end %>
       <div class="field">
-        <%= profile_img(@user)if profile_img(@user) %>
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
         <br>
+      </div>
+
+      <div class="field">
+        <%= f.label :現在のパスワード %> <br />
+        <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
         <br>
-        <%= f.file_field :avatar %>
-        <%= f.hidden_field :avatar_cache %>
       </div>
 
       <div class="actions">
         <br>
-        <%= f.submit "更新",class:'btn btn-primary btn-block' %>
+        <%= f.submit "更新",class:'btn btn-teal500_rsd btn-block' %>
       </div>
     <% end %>
     <br>

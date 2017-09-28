@@ -1,9 +1,8 @@
 header{
     width: 100%;
     height: 60px;
-    background-color: #3B5998;
+    background-color: #F5F5F5;
     margin: auto;
-    border-bottom: 1px solid #ccc;
     ul {
      padding-left: 10px;
      margin: 0px;
@@ -11,7 +10,7 @@ header{
 }
 footer{
     width: 100%;
-    background-color: #3B5998;
+    background-color: #F5F5F5;
     padding: 20px 0 10px 0;
     color: black;
     margin: auto;
@@ -19,12 +18,13 @@ footer{
     bottom: 0;
     position: absolute;      /*footerを最下部に固定*/
     z-index: 1;
+    border-top: solid 1px gray;
 }
 #top-row {
     margin: 0;
     padding: 0;
     width: 100%;
-    background: linear-gradient(to bottom, white, #D3D8E8);
+    background-color: #F5F5F5;
     height: 1000px;
 }
 #top-img{
@@ -34,7 +34,8 @@ footer{
     padding: 0 auto;
 }
 #top-signin{
-    margin: 50px 15px 100px 15px;
+  margin-bottom: 74px;
+  padding: 20px 20px 20px 35px;
     h1{
       font-size: 60px;
       font-family: inherit;
@@ -44,24 +45,31 @@ footer{
 }
 .top.container{
   padding: 0;   /*top画面のfooterにcontainerが重ならない措置&横目一杯にbackgroundcolor*/
+  height: 1000px;
 }
 .container{
-  background-color: white;
+  background-color: #F5F5F5;
   margin: 0;
   padding-bottom: 85px;
   width: 100%;
-  height: auto;
+  height: 1000px;
 }
 .wrapper {                           /*一覧画面*/
     margin-bottom: 74px;
     padding: 20px 20px 20px 35px;
-    background-color: white;
+    background-color: #F5F5F5;
 .row {
     padding: 20px;
     text-align: center;
     word-wrap: break-word;
     border-bottom: 1px solid #ccc;
 }
+  h1{
+    font-size: 60px;
+    font-family: inherit;
+    color: black;
+    margin: 0;
+  }
 }
 .sign-in{                           /*Top画面サインインポジション調整*/
   padding: 0;
@@ -81,13 +89,19 @@ footer{
 }
 .navbar-default {
   .navbar-brand {
-    color: white;
+    padding-left: 5px;
+    color: #009688;
+    font-weight: bold;
+    font-size: 30px;
     &:hover {
       color: #696969;
     }
   }
   .navbar-nav > li > a {
-    color: white;
+    font-family: inherit;
+    color: #EF5350;
+    font-weight: bold;
+    font-size: 20px;
     text-align: right;
     &:hover, &:focus {
       color: #696969;
@@ -123,7 +137,7 @@ footer{
 	width: 100%;
 	height: 100%;
     background-size: cover;
-    background-color: white;
+    background-color: #F5F5F5;
 }
 html{
     position: relative;
@@ -134,6 +148,7 @@ body{
     min-height: 100%;
     padding-bottom: 0;
     margin-bottom: 0;
+    background-color: #F5F5F5;
 }
 input[type="submit"].btn-block{   /*ボタン*/
     margin: 10px 0;
@@ -170,14 +185,4 @@ p#notice {                        /*noticeメッセージ装飾*/
   color: black;
   padding-top: 10px;
   z-index: 2;
-}
-
-img{
-  max-width: 100%;     /*profile imageが大きく表示されないようにする*/
-}
-.topic{
-  max-width: 50%;    /*topic一覧の投稿画像を中央寄りにする処理*/
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }

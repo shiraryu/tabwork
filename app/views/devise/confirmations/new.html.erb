@@ -10,7 +10,7 @@
         <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
       </div>
       <div class="actions">
-        <%= f.submit "確認メールを送信する", class: "btn btn-primary btn-block" %>
+        <%= f.submit "確認メールを送信する", class: "btn btn-black_rsd btn-block" %>
       </div>
     <% end %>
     <br>

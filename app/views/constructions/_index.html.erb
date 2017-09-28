@@ -1,0 +1,13 @@
+<ul>
+  <% constructions.each do |construction| %>
+    <% unless construction.id.nil? %>
+      <li>
+        <p class="left"><%= construction.name %></p>
+          <p class="right">
+            <%= link_to '', edit_workplace_construction_path(workplace, construction), class: "fa fa-pencil-square-o fa-lg" %>
+            <%= link_to '', workplace_construction_path(workplace, construction), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } %>
+          </p>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
