@@ -39,6 +39,10 @@ class ConstructionsController < ApplicationController
     end
   end
 
+  def get_construction
+    render partial: 'construction', locals: {construction_id:  params[:workplace_id]}
+  end
+
   private
     def construction_params
       params.require(:construction).permit(:workplace_id, :name)

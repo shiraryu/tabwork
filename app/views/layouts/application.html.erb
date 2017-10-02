@@ -48,6 +48,19 @@
     <p>© 2015-2016 Copyright Tabric Corp.</p>
   </footer>
   <% end %>
-
+<script>
+$(document).on('change', '#id_select_workplace', function(e) {
+  let id = $(this).val()
+return $.ajax({
+  type: 'GET',
+  url: '/workplaces/' + id + '/constructions/:construction_id/get_construction',
+  data: {
+    workplace_id: $(this).val()
+  }
+}).done(function(data) {
+  return $('.const_area').html(data);
+});
+});
+</script>
 </body>
 </html>

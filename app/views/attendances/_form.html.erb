@@ -11,8 +11,11 @@
         <th>作業時間入力（数字のみ）</th>
       </tr>
       <%= f.nested_fields_for :worktime_aggregates, wrapper_tag: :tr do |q| %>
-        <td><%= q.collection_select :workplace,Workplace.all,:id,:name %></td>
-        <td><%= q.collection_select :construction,Construction.all,:id,:name %></td>
+        <td><%= collection_select :id, :select_workplace, Workplace.all,:id,:name %></td>
+        <tr class="const_area">
+          <td><%= render partial: '/constructions/construction', locals: {construction_id: Workplace.first} %></td>
+        </tr>
+        <td><%#= q.collection_select :construction, Construction.all,:id,:name %></td>
         <td><%= q.text_field :constructiontime, class: 'form-control' %></td>
         <td><%= q.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button' %></td>
       <% end %>

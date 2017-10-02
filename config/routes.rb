@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :workplaces do
-    resources :constructions
+    resources :constructions do
+      get 'get_construction'
+    end
+
     post :confirm ,on: :collection
   end
 
