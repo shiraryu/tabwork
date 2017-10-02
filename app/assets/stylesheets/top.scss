@@ -120,6 +120,7 @@ footer{
   }
     a.dropdown-toggle{      /*menu*/
     padding-right: 3px;
+    padding-top: 13px;
     font-size: 18px;
   }
 }
@@ -154,7 +155,7 @@ input[type="submit"].btn-block{   /*ボタン*/
     margin: 10px 0;
 }
 p#notice {                        /*noticeメッセージ装飾*/
-    font-size:30px;
+    font-size:20px;
     color:black;
     z-index: 2;
 }

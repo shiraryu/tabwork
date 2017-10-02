@@ -3,7 +3,7 @@ ready = ->                                                  #ページロード�
     element = $('#page-top-btn')
     visible = element.is(':visible')
     height = $(window).scrollTop()
-    if height > 400
+    if height > 200
       element.fadeIn() if !visible
     else
       element.fadeOut()

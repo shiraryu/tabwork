@@ -11,14 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927024415) do
+ActiveRecord::Schema.define(version: 20171001101435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "attendances", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.time     "opening_time"
+    t.time     "closing_time"
+    t.date     "working_date"
+    t.float    "over_time"
+    t.string   "holiday"
   end
 
   create_table "constructions", force: :cascade do |t|
@@ -58,6 +64,14 @@ ActiveRecord::Schema.define(version: 20170927024415) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "worktime_aggregates", force: :cascade do |t|
+    t.integer  "construction_id"
+    t.integer  "attendance_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "constructiontime"
   end
 
 end
