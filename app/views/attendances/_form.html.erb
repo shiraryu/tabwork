@@ -38,8 +38,8 @@
       <%= f.nested_fields_for :worktime_aggregates, wrapper_tag: :tr do |q| %>
         <td><%= collection_select :id, :select_workplace, Workplace.all,:id,:name %></td>
         <td class="const_area">
-          <%= render partial: '/constructions/construction', locals: {construction_id: Workplace.first} %>
-       </td>
+          <%= render partial: '/constructions/construction', locals: {construction_id: Workplace.first, q: q} %>
+        </td>
         <td><%= q.number_field_tag :constructiontime, class: 'form-control' %></td>
         <td><%= q.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button' %></td>
       <% end %>
