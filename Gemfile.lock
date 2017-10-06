@@ -50,6 +50,8 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap3-datetimepicker-rails (4.17.47)
+      momentjs-rails (>= 2.8.1)
     builder (3.2.3)
     byebug (9.1.0)
     cancan (1.6.10)
@@ -145,6 +147,8 @@ GEM
     mini_magick (4.8.0)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
+    momentjs-rails (2.17.1)
+      railties (>= 3.1)
     multi_json (1.12.2)
     nested_form (0.3.2)
     nested_form_fields (0.8.2)
@@ -155,6 +159,8 @@ GEM
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     pg (0.21.0)
+    pickadate-rails (3.5.6.0)
+      railties (>= 3.1.0)
     pry (0.11.0)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -273,6 +279,7 @@ PLATFORMS
 DEPENDENCIES
   activeresource
   better_errors
+  bootstrap3-datetimepicker-rails
   byebug
   cancan
   carrierwave
@@ -285,8 +292,10 @@ DEPENDENCIES
   jquery-turbolinks
   letter_opener_web
   mini_magick
+  momentjs-rails
   nested_form_fields
   pg
+  pickadate-rails
   pry-rails
   rails (= 4.2.3)
   rails_12factor

@@ -62,3 +62,5 @@ gem 'carrierwave'
 gem 'mini_magick' #画像サイズ変更
 gem 'faker'
 gem 'nested_form_fields'
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'

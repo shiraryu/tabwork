@@ -3,18 +3,19 @@ class AttendancesController < ApplicationController
 
   def index
     @attendances = Attendance.all
-    @worktime_aggregates = Worktime_aggregate.all
+
   end
 
   def new
     @attendance = Attendance.new
+    @attendance.worktime_aggregates.build
   end
 
   def create
     @attendance = Attendance.new(attendances_params) #render 'new'に変数を渡すため
     @attendance.user_id = current_user.id
     if @attendance.save
-      redirect_to attendances_path, notice: "頑張ったことを作成しました！"
+      redirect_to attendances_path, notice: "登録しました！"
     else
       render 'new'
     end
@@ -34,7 +35,7 @@ class AttendancesController < ApplicationController
 
   private
     def attendances_params
-      params.require(:attendance).permit(:working_date, worktime_aggregates_attributes: [:workplace, :construction, :constructiontime])
+      params.require(:attendance).permit(:opening_datetime,:closing_datetime,:over_time,:holiday, worktime_aggregates_attributes:[:select_workplace, :construction_id,:constructiontime,:id,:_destroy])
     end
 
 end
