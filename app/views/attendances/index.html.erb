@@ -1,0 +1,23 @@
+<div class = "container">
+  <div class = "wrapper col-md-12 col-sm-10">
+  <p> <%= notice %> </p>
+
+  <h3>出退勤情報一覧</h3>
+  <br>
+    <%= link_to "新規登録",new_attendance_path,class:'btn btn-default btn-brown300_rsd btn-sm' 'style=font-size:15px;' %>
+    <br>
+    <br>
+    <% @attendances.each do |attendance| %>
+      <br>
+      <br>
+        <p><%= attendance.opening_datetime.strftime("%m月%d日") %></p>
+        <p><%= attendance.opening_datetime.strftime("%H時%M分") %></p>
+        <p><%= attendance.closing_datetime.strftime("%H時%M分") %></p>
+        <p><%= attendance.sum_of_attendance_time %></p>
+        <p><%= attendance.sum_of_over_time %></p>
+    <% end %>
+  </div>
+  <div id="page-top-btn" class="page-top-btn">
+    <p><a class="move-page-top" id="move-page-top">▲</a></p>
+  </div>
+</div>
