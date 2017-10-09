@@ -40,7 +40,9 @@ class ConstructionsController < ApplicationController
   end
 
   def get_construction
-    render partial: 'construction', locals: {construction_id:  params[:workplace_id]}
+    @constructions = Construction.where(workplace_id: params[:workplace_id])
+    @select = params[:select_id]
+    render 'get_construction'
   end
 
   private

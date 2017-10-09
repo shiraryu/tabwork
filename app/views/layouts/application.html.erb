@@ -50,20 +50,23 @@
   </footer>
   <% end %>
 
-  <script>   <!-- 作業時間入力時のセレクトボックス書き換えAjax -->
-   $(document).on('change', '#id_select_workplace', function(e) {
-     let id = $(this).val()
-   return $.ajax({
-     type: 'GET',
-     url: '/workplaces/' + id + '/constructions/:construction_id/get_construction',
-     data: {
-       workplace_id: $(this).val()
-     }
-   }).done(function(data) {
-     return $('.const_area').html(data);
-   });
-   });
-  </script>
+<script>
+  $(document).on('change', 'select', function(e) {
+  // タグ番号取得
+    let id = e.target.id.substr(-4,1)
+    id = $(this).val()
+  return $.ajax({
+    type: 'GET',
+    url: '/workplaces/' + id + '/constructions/:construction_id/get_construction',
+    data: {
+      workplace_id: $(this).val(),
+      select_id: id
+    }
+  }).done(function(data) {
+    return $('#construc').html(data);
+  });
+  });
+</script>
 
 </body>
 </html>
