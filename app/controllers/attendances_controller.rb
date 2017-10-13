@@ -12,14 +12,12 @@ class AttendancesController < ApplicationController
   end
 
   def create
-    binding.pry
     @attendance = Attendance.new(attendances_params) #render 'new'に変数を渡すため
     @attendance.user_id = current_user.id
     if @attendance.save
-      format.html { redirect_to attendances_path(@attendance), notice: '登録しました。' }
-      format.js { render :index }
+      redirect_to attendances_path(@attendance), notice: '登録しました。'
     else
-      format.html { render :new }
+      render :new
     end
   end
 
