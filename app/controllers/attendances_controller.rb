@@ -12,12 +12,14 @@ class AttendancesController < ApplicationController
   end
 
   def create
+    binding.pry
     @attendance = Attendance.new(attendances_params) #render 'new'に変数を渡すため
     @attendance.user_id = current_user.id
     if @attendance.save
-      redirect_to attendances_path, notice: "登録しました！"
+      format.html { redirect_to attendances_path(@attendance), notice: '登録しました。' }
+      format.js { render :index }
     else
-      render 'new'
+      format.html { render :new }
     end
   end
 
@@ -35,7 +37,7 @@ class AttendancesController < ApplicationController
 
   private
     def attendances_params
-      params.require(:attendance).permit(:opening_datetime,:closing_datetime,:over_time,:holiday, worktime_aggregates_attributes:[:select_workplace, :construction_id,:constructiontime,:id,:_destroy])
+      params.require(:attendance).permit(:opening_datetime,:closing_datetime,:over_time,:holiday, worktime_aggregates_attributes:[:select_workplace, :construction_id,:constructiontime,:attendance_id,:_destroy,:construction])
     end
 
 end

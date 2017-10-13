@@ -51,9 +51,9 @@
   <% end %>
 
 <script>
-  $(document).on('change', 'select', function(e) {
+  $(document).on('change', 'select#attendance_worktime_aggregates_attributes_0_id', function(e) {
   // タグ番号取得
-    let id = e.target.id.substr(-4,1)
+    let id = e.target.id.match(/construction/)
     id = $(this).val()
   return $.ajax({
     type: 'GET',

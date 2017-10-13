@@ -1,8 +1,8 @@
-<%= form_for(@attendance,remote: true) do |f| %>
+<%= form_for(@attendance,url: attendances_path) do |f| %>
 
   <%= f.label :出勤日時 %>
   <div class='input-group date datetimepicker'>
-    <%= f.text_field :opening_datetime, class: 'form-control' %>
+    <%= f.text_field :opening_datetime, class: 'form-control input-sm' %>
     <span class="input-group-addon">
       <span class="fa fa-calendar"></span>
     </span>
@@ -10,7 +10,7 @@
   <br>
   <%= f.label :退勤日時 %>
   <div class='input-group date datetimepicker'>
-    <%= f.text_field :closing_datetime, class: 'form-control' %>
+    <%= f.text_field :closing_datetime, class: 'form-control input-sm' %>
     <span class="input-group-addon">
       <span class="fa fa-calendar"></span>
     </span>
@@ -36,9 +36,9 @@
         <th>時間</th>
       </tr>
       <%= f.nested_fields_for :worktime_aggregates, wrapper_tag: :tr do |q| %>
-        <td><%= q.collection_select :id, Workplace.all,:id,:name %></td>
-        <td><%= q.collection_select :construction, Construction.all,:id,:name, id: "construc" %></td>
-        <td><%= q.text_field :constructiontime, class: 'form-control' %></td>
+        <td><%= q.collection_select :id, Workplace.all,:id,:name,{prompt: "選択"}, {class: "form-control input-sm"} %></td>
+        <td><%= q.collection_select :construction, Construction.all,:id,:name ,{prompt: "選択"}, {class: "form-control input-sm"} %></td>
+        <td><%= q.text_field :constructiontime, class: 'form-control input-sm' %></td>
         <td><%= q.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button' %></td>
       <% end %>
     </tbody>
