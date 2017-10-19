@@ -22,15 +22,10 @@
 //= require_tree .
 
 $(function(){
-  $('.datepicker').datetimepicker({
-    format : "YYYY/MM/DD",
-    icons: {
-      previous: "fa fa-arrow-left",
-      next: "fa fa-arrow-right"
-    }
-  });
   $('.datetimepicker').datetimepicker({
     format : "YYYY/MM/DD HH:mm",
+    sideBySide: true,
+    stepping: 30,
     icons: {
       time: "fa fa-clock-o",
       date: "fa fa-calendar",

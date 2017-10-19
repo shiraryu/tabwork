@@ -10,11 +10,18 @@
     <% @attendances.each do |attendance| %>
       <br>
       <br>
+      <% if attendance.holiday == true %>
+        <p><%= attendance.opening_datetime.strftime("%m月%d日") %></p>
+        <p>休暇<% attendance.holiday %></p>
+      <% else %>
         <p><%= attendance.opening_datetime.strftime("%m月%d日") %></p>
         <p><%= attendance.opening_datetime.strftime("%H時%M分") %></p>
         <p><%= attendance.closing_datetime.strftime("%H時%M分") %></p>
-        <p><%= attendance.sum_of_attendance_time %></p>
-        <p><%= attendance.sum_of_over_time %></p>
+        <p><%= attendance.attendance_time %></p>
+        <p><%= attendance.over_time %></p>
+      <% end %>
+        <%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %>
+        <%= link_to "削除", attendance_path(attendance.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-pink400_rsd btn-sm' %>
     <% end %>
   </div>
   <div id="page-top-btn" class="page-top-btn">

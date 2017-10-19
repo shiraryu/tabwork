@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171004102716) do
+ActiveRecord::Schema.define(version: 20171018085734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20171004102716) do
     t.boolean  "holiday",          default: false, null: false
     t.datetime "opening_datetime"
     t.datetime "closing_datetime"
+    t.float    "break_time"
   end
 
   create_table "constructions", force: :cascade do |t|
@@ -70,7 +71,7 @@ ActiveRecord::Schema.define(version: 20171004102716) do
     t.integer  "attendance_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "constructiontime"
+    t.float    "constructiontime"
   end
 
 end

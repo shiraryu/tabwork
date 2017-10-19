@@ -1,0 +1,46 @@
+<div class = "container">
+  <div class = "col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <br>
+    <h5 style = "text-decoration:underline">確認</h5>
+    <%= form_for(@attendance)do |f| %>
+      <%= f.hidden_field :opening_datetime %>
+      <%= f.hidden_field :closing_datetime %>
+      <%= f.hidden_field :over_time %>
+      <%= f.hidden_field :break_time %>
+      <%= f.hidden_field :holiday %>
+
+      <%= f.nested_fields_for(@worktime_aggregate) do |q| %>
+        <%= q.hidden_field :construction_id %>
+        <%= q.hidden_field :constructiontime %>
+
+      <br>
+      <% if @attendance.holiday == true %>
+        <p>出勤日:　<%= @attendance.opening_datetime.strftime("%m月%d日") %></p>
+        <p>休暇<% @attendance.holiday %></p>
+      <% else %>
+        <p>出勤日:　<%= @attendance.opening_datetime.strftime("%m月%d日") %></p>
+        <p>出勤時間:　<%= @attendance.opening_datetime.strftime("%H時%M分") %></p>
+        <p>退勤日時:　<%= @attendance.closing_datetime.strftime("%H時%M分") %></p>
+        <p>時間外勤務:　<%= @attendance.over_time %></p>
+        <p>休憩時間:　<%= @attendance.break_time %></p>
+        <br>
+        <p>工事:　<%= @worktime_aggregate.construction_id %></p>
+        <p>工事時間:　<%= @worktime_aggregate.constructiontime %></p>
+      <% end %>
+      <br>
+      <%= f.submit "送信",class:'btn btn-default btn-sm' %>
+      <br>
+      <br>
+      <% end %>
+    <% end %>
+
+    <%= form_for(@attendance,url: new_attendance_path,method: 'get') do |f| %>
+      <%= f.hidden_field :opening_datetime %>
+      <%= f.hidden_field :closing_datetime %>
+      <%= f.hidden_field :over_time %>
+      <%= f.hidden_field :break_time %>
+      <%= f.hidden_field :holiday %>
+      <%= f.submit "戻る", name: 'back',class:'btn btn-default btn-sm' %>
+    <% end %>
+  </div>
+</div>

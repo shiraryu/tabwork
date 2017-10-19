@@ -2,7 +2,7 @@ class ConstructionsController < ApplicationController
   before_action :set_construction,only:[:edit,:update,:destroy]
   # constructionを保存、投稿するためのアクション
   def create
-    # workplace_idをパラメータの値から探し出し,workplaceに紐づくconstructionsとしてbuildする
+    # workplace_idをパラメータの値から探し出し,workplaceに紐づくconstructionsとしてbuild
     @construction = Construction.new(construction_params)
     @workplace = @construction.workplace
     # クライアント要求に応じてフォーマットを変更
@@ -22,7 +22,7 @@ class ConstructionsController < ApplicationController
   def update
       respond_to do |format|
         if @construction.update(construction_params)
-          format.html {redirect_to workplace_path(@construction.workplace), notice:"工事名を編集しました！"}
+          format.html {redirect_to workplace_path(@construction.workplace), notice:"工事名を編集しました"}
         else
           format.html { render :edit }
         end
