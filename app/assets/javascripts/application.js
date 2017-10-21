@@ -21,7 +21,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){
+$(document).on('turbolinks:load',$(function(){
   $('.datetimepicker').datetimepicker({
     format : "YYYY/MM/DD HH:mm",
     sideBySide: true,
@@ -35,4 +35,5 @@ $(function(){
       next: "fa fa-arrow-right",
     }
   });
+});
 });

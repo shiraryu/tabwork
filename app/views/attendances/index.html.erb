@@ -1,29 +1,58 @@
 <div class = "container">
   <div class = "wrapper col-md-12 col-sm-10">
   <p> <%= notice %> </p>
-
-  <h3>出退勤情報一覧</h3>
-  <br>
-    <%= link_to "新規登録",new_attendance_path,class:'btn btn-default btn-brown300_rsd btn-sm' 'style=font-size:15px;' %>
-    <br>
-    <br>
-    <% @attendances.each do |attendance| %>
-      <br>
-      <br>
-      <% if attendance.holiday == true %>
-        <p><%= attendance.opening_datetime.strftime("%m月%d日") %></p>
-        <p>休暇<% attendance.holiday %></p>
-      <% else %>
-        <p><%= attendance.opening_datetime.strftime("%m月%d日") %></p>
-        <p><%= attendance.opening_datetime.strftime("%H時%M分") %></p>
-        <p><%= attendance.closing_datetime.strftime("%H時%M分") %></p>
-        <p><%= attendance.attendance_time %></p>
-        <p><%= attendance.over_time %></p>
-      <% end %>
-        <%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %>
-        <%= link_to "削除", attendance_path(attendance.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-pink400_rsd btn-sm' %>
-    <% end %>
+  <div class = "row">
+    <div class = "col-md-2">
+    </div>
   </div>
+  <div class = "row">
+    <div class = "col-md-10">
+    <h3>出退勤情報一覧</h3>
+    <br>
+    <br>
+    <%= link_to "新規登録",new_attendance_path,class:'btn btn-default btn-brown300_rsd btn-sm' 'style=font-size:15px;',method: :get %>
+    <br>
+    <br>
+    <br>
+      <table class="table table-striped table-bordered table-hover">
+        <tbody>
+          <tr>
+            <th>日付</th>
+            <th>出勤</th>
+            <th>退勤</th>
+            <th>定時内</th>
+            <th>時間外</th>
+            <th>休憩</th>
+            <th>休暇</th>
+          </tr>
+          <% @attendances.each do |attendance| %>
+          <% if attendance.holiday == true %>
+            <td><%= attendance.opening_datetime.strftime("%m/%d") %></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>○<% attendance.holiday %></td>
+            <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %></td>
+            <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "削除", attendance_path(attendance.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-pink400_rsd btn-sm' %></td>
+          <% else %>
+            <td><%= attendance.opening_datetime.strftime("%m/%d") %></td>
+            <td><%= attendance.opening_datetime.strftime("%H:%M") %></td>
+            <td><%= attendance.closing_datetime.strftime("%H:%M") %></d>
+            <td><%= attendance.attendance_time %></td>
+            <td><%= attendance.over_time %></td>
+            <td><%= attendance.break_time %></td>
+            <td></td>
+            <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %></td>
+            <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "削除", attendance_path(attendance.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-pink400_rsd btn-sm' %></td>
+          <% end %>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
   <div id="page-top-btn" class="page-top-btn">
     <p><a class="move-page-top" id="move-page-top">▲</a></p>
   </div>

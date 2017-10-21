@@ -1,6 +1,6 @@
 class Attendance < ActiveRecord::Base
 
-  validates_presence_of :opening_datetime
+    validates_presence_of :opening_datetime
 
   has_many :worktime_aggregates,dependent: :destroy
   has_many :worktime_aggregate_constructions,through: :worktime_aggregates,source: :constructions
@@ -21,4 +21,7 @@ class Attendance < ActiveRecord::Base
     end
   end
 
+  def attendance_month
+    Attendance.group("CONCAT(YEAR(opening_datetime), MONTH(opening_datetime))").count
+  end
 end

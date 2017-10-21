@@ -64,3 +64,4 @@ gem 'faker'
 gem 'nested_form_fields'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
+gem 'composite_primary_keys' #複合主キーを使うため
