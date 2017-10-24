@@ -1,16 +1,35 @@
 <div class = "container">
   <div class = "wrapper col-md-12 col-sm-10">
   <p> <%= notice %> </p>
-  <div class = "row">
-    <div class = "col-md-2">
-    </div>
+
+  <div class = "select_form">
+    <%= form_for(@attendance,url:attendances_path, :method => 'get') do |f| %>
+      <%= f.collection_select :opening_datetime, Attendance.all, :id,:select_year,:default => Time.now,:date_separator => '-' %>
+      <%= f.collection_select :opening_datetime, Attendance.all, :id,:select_month,:default => Time.now,:date_separator => '-' %>
+      <%= f.submit '検索' %>
+    <% end %>
   </div>
-  <div class = "row">
-    <div class = "col-md-10">
+
     <h3>出退勤情報一覧</h3>
     <br>
-    <br>
     <%= link_to "新規登録",new_attendance_path,class:'btn btn-default btn-brown300_rsd btn-sm' 'style=font-size:15px;',method: :get %>
+    <table class="table table-striped table-bordered table-hover">
+    <tbody>
+      <tr>
+        <th>出勤日数</th>
+        <th>定時内計</th>
+        <th>残業計</th>
+        <th>休憩時間計</th>
+        <th>休暇日数</th>
+      </tr>
+        <td><%= Attendance.sum_of_attendance_date(@attendances) %></td>
+        <td><%= Attendance.sum_of_attendance_time_month(@attendances) %></td>
+        <td><%= Attendance.sum_of_over_time(@attendances) %></td>
+        <td><%= Attendance.sum_of_break_time(@attendances) %></td>
+        <td><%= Attendance.sum_of_holiday(@attendances) %></td>
+    </tbody>
+    </tabale>
+    <br>
     <br>
     <br>
     <br>
@@ -50,8 +69,6 @@
         </tbody>
         <% end %>
       </table>
-    </div>
-  </div>
 </div>
   <div id="page-top-btn" class="page-top-btn">
     <p><a class="move-page-top" id="move-page-top">▲</a></p>

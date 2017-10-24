@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/radar/by_star
+  revision: 1807d93f0a1e0d68c7ffe93b97b94f48e8234e81
+  specs:
+    by_star (2.2.1)
+      activesupport
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -68,8 +75,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
-    composite_primary_keys (8.1.6)
-      activerecord (~> 4.2.0)
     concurrent-ruby (1.0.5)
     crass (1.0.2)
     debug_inspector (0.0.3)
@@ -280,11 +285,11 @@ DEPENDENCIES
   activeresource
   better_errors
   bootstrap3-datetimepicker-rails
+  by_star!
   byebug
   cancan
   carrierwave
   coffee-rails (~> 4.1.0)
-  composite_primary_keys
   devise
   dotenv-rails
   faker

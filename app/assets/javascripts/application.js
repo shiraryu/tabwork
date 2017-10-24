@@ -34,6 +34,5 @@ $(document).on('turbolinks:load',$(function(){
       previous: "fa fa-arrow-left",
       next: "fa fa-arrow-right",
     }
-  });
-});
-});
+  })
+}));

@@ -3,7 +3,9 @@ class AttendancesController < ApplicationController
   before_action :set_attendance,only:[:show,:edit,:update,:destroy]
 
   def index
+    @attendance = Attendance.new
     @attendances = Attendance.all.order(:opening_datetime) #日時順
+
   end
 
   def new
@@ -49,7 +51,7 @@ class AttendancesController < ApplicationController
 
   private
     def attendances_params
-      params.require(:attendance).permit(:opening_datetime,:closing_datetime,:over_time,:break_time,:holiday, worktime_aggregates_attributes:[:select_workplace, :construction_id,:constructiontime,:attendance_id,:_destroy,:construction])
+      params.require(:attendance).permit(:opening_datetime,:closing_datetime,:over_time,:break_time,:holiday,:attendance_time, worktime_aggregates_attributes:[:select_workplace, :construction_id,:constructiontime,:attendance_id,:_destroy,:construction])
     end
     def set_attendance
       @attendance = Attendance.find(params[:id])
