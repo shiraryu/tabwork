@@ -8,13 +8,6 @@ class Attendance < ActiveRecord::Base
   belongs_to :user
   accepts_nested_attributes_for :worktime_aggregates, allow_destroy: true
 
-  def select_year
-    opening_datetime.strftime("%-Y年")
-  end
-  def select_month
-    opening_datetime.strftime("%-m月")
-  end
-
   def sum_of_attendance_time
     (((closing_datetime - opening_datetime) / 60 / 60) - (break_time.to_f) - (over_time.to_f)).to_f
   end
@@ -27,6 +20,10 @@ class Attendance < ActiveRecord::Base
     else
     (((closing_datetime - opening_datetime) / 60 / 60) - (break_time.to_f) - (over_time.to_f)).to_f
     end
+  end
+
+  def self.attendance_month(attendance)
+    Attendance.where(opening_datetime: "2017-10-01".in_time_zone.all_month)
   end
 
     def self.sum_of_attendance_date(attendances)  #出勤日数

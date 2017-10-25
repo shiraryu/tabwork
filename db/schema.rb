@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171023124730) do
+ActiveRecord::Schema.define(version: 20171025053948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20171023124730) do
     t.datetime "closing_datetime"
     t.float    "break_time"
     t.float    "attendance_time"
+    t.date     "date_search"
   end
 
   create_table "constructions", force: :cascade do |t|

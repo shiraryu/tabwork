@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     post :confirm ,on: :collection
   end
 
+  resources :worktime_aggregates,only:[:index,:show]
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine,at:'/letter_opener'
   end

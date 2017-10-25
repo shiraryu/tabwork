@@ -4,9 +4,8 @@
 
   <div class = "select_form">
     <%= form_for(@attendance,url:attendances_path, :method => 'get') do |f| %>
-      <%= f.collection_select :opening_datetime, Attendance.all, :id,:select_year,:default => Time.now,:date_separator => '-' %>
-      <%= f.collection_select :opening_datetime, Attendance.all, :id,:select_month,:default => Time.now,:date_separator => '-' %>
-      <%= f.submit '検索' %>
+      <p><%= f.date_select :date_search,{:discard_day=>true,:start_year=>2017,:default=>Time.now} %>
+      <%= f.submit '検索',class: "btn btn-white_rsd btn-sm" %></p>
     <% end %>
   </div>
 
