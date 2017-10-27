@@ -3,13 +3,21 @@ class AttendancesController < ApplicationController
   before_action :set_attendance,only:[:show,:edit,:update,:destroy]
 
   def index
-    unless params[:attendance]
-      @attendance = Attendance.new #select_form
-      binding.pry
-      date_search = "#{params[:attendance][“date_search(1i)”]}-#{params[:attendance][“date_search(2i)”]}-#{params[:attendance][“date_search(3i)”]}"
-      @attendances = Attendance.where(opening_datetime: date_search.in_time_zone.all_month).order(:opening_datetime) #日時順 , 日付検索一覧返す
+    @attendance = Attendance.new #select_form
+    if params[:attendance]
+      date_search = "#{params[:attendance]["date_search(1i)"]}-#{params[:attendance]["date_search(2i)"]}-#{params[:attendance]["date_search(3i)"]}"
+      @attendances = Attendance.where(opening_datetime: date_search.in_time_zone.all_month).order(:opening_datetime)
+    else
+      date_default = "#{Date.today.year}-#{Date.today.month}-#{01}"
+      @attendances = Attendance.where(opening_datetime: date_default.in_time_zone.all_month).order(:opening_datetime)
     end
-      @attendances = Attendance.where(opening_datetime: "2017-10-01".in_time_zone.all_month).order(:opening_datetime)
+  end
+
+  def show
+      @attendance.worktime_aggregates.build
+      opening_datetime_show = @attendance.opening_datetime  #入ってきたIDからopening_datetime取得
+      opening_date = "#{opening_datetime_show.year}-#{opening_datetime_show.month}-#{01}" #成形
+      @attendances = Attendance.where(opening_datetime: opening_date.in_time_zone.all_month).order(:opening_datetime)
   end
 
   def new
@@ -32,7 +40,6 @@ class AttendancesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update

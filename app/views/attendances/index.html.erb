@@ -1,17 +1,22 @@
 <div class = "container">
   <div class = "wrapper col-md-12 col-sm-10">
   <p> <%= notice %> </p>
-
-  <div class = "select_form">
-    <%= form_for(@attendance,url:attendances_path, :method => 'get') do |f| %>
-      <p><%= f.date_select :date_search,{:discard_day=>true,:start_year=>2017,:default=>Time.now} %>
-      <%= f.submit '検索',class: "btn btn-white_rsd btn-sm" %></p>
-    <% end %>
-  </div>
-
     <h3>出退勤情報一覧</h3>
     <br>
     <%= link_to "新規登録",new_attendance_path,class:'btn btn-default btn-brown300_rsd btn-sm' 'style=font-size:15px;',method: :get %>
+    <br>
+    <br>
+    <div class = "select_form">
+      <%= form_for(@attendance,url:attendances_path, :method => 'get') do |f| %>
+        <p><%= f.date_select :date_search,{:discard_day=>true,:start_year=>2017,:default=>Time.now} %>
+        <%= f.submit '検索',class: "btn btn-white_rsd btn-sm" %></p>
+      <% end %>
+    </div>
+    <div class = "const_attendance">
+      <%= link_to attendance_path(@attendances.first) do %>
+        <h5><strong>作業情報一覧</strong></h5>
+      <% end %>
+    </div>
     <table class="table table-striped table-bordered table-hover">
     <tbody>
       <tr>

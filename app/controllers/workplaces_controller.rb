@@ -14,6 +14,11 @@ class WorkplacesController < ApplicationController
     end
   end
 
+  def show
+    @construction = @workplace.constructions.build   # 入力フォーム用インスタンス
+    @constructions = @workplace.constructions        # 一覧用インスタンス
+  end
+
   def create
     @workplace = Workplace.new(workplaces_params)
     if @workplace.save
@@ -38,11 +43,6 @@ class WorkplacesController < ApplicationController
   def destroy
     @workplace.destroy
     redirect_to workplaces_path
-  end
-
-  def show
-    @construction = @workplace.constructions.build   # 入力フォーム用インスタンス
-    @constructions = @workplace.constructions        # 一覧用インスタンス
   end
 
   def confirm
