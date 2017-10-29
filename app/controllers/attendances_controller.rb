@@ -20,6 +20,10 @@ class AttendancesController < ApplicationController
       @attendances = Attendance.where(opening_datetime: opening_date.in_time_zone.all_month).order(:opening_datetime)
   end
 
+  def detail
+    @attendance = Attendance.find(params[:attendance_id])
+  end
+
   def new
     if params[:back]
       @attendance = Attendance.new(attendances_params)

@@ -1,0 +1,2 @@
+class WorktimeAggregatesController < ApplicationController
+end

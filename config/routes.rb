@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'worktime_aggregates/index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
   resources :workplaces do
     resources :constructions do
       get 'get_construction'
+      get 'consttime'
+      get 'consttime_detail'
     end
     post :confirm ,on: :collection
   end
@@ -13,10 +17,9 @@ Rails.application.routes.draw do
   resources :users,only:[:index,:show]
 
   resources :attendances do
+    get 'detail'
     post :confirm ,on: :collection
   end
-
-  resources :worktime_aggregates,only:[:index,:show]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine,at:'/letter_opener'

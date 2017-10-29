@@ -6,17 +6,17 @@ class WorkplacesController < ApplicationController
     @workplaces = Workplace.all
   end
 
+  def show
+    @construction = @workplace.constructions.build   # 入力フォーム用インスタンス
+    @constructions = @workplace.constructions        # 一覧用インスタンス
+  end
+  
   def new
     if params[:back]
       @workplace = Workplace.new(workplaces_params)
     else
       @workplace = Workplace.new
     end
-  end
-
-  def show
-    @construction = @workplace.constructions.build   # 入力フォーム用インスタンス
-    @constructions = @workplace.constructions        # 一覧用インスタンス
   end
 
   def create

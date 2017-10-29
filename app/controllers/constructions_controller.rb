@@ -1,6 +1,15 @@
 class ConstructionsController < ApplicationController
   before_action :set_construction,only:[:edit,:update,:destroy]
   # constructionを保存、投稿するためのアクション
+
+  def consttime
+    @construction = Construction.new #select_form
+    @constructions = Construction.all
+  end
+
+  def consttime_detail
+  end
+
   def create
     # workplace_idをパラメータの値から探し出し,workplaceに紐づくconstructionsとしてbuild
     @construction = Construction.new(construction_params)
@@ -47,7 +56,7 @@ class ConstructionsController < ApplicationController
 
   private
     def construction_params
-      params.require(:construction).permit(:workplace_id, :name)
+      params.require(:construction).permit(:workplace_id, :name,:constdate_search)
     end
     def set_construction
       @construction = Construction.find(params[:id])
