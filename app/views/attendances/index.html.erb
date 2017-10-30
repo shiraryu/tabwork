@@ -37,8 +37,6 @@
     </tabale>
     <br>
     <br>
-    <br>
-    <br>
       <table class="table table-striped table-bordered table-hover">
         <tbody>
           <tr>
@@ -59,7 +57,7 @@
             <td></td>
             <td></td>
             <td>○<% attendance.holiday %></td>
-            <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm',method: :get %></td>
+            <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %></td>
             <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "削除", attendance_path(attendance.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-pink400_rsd btn-sm' %></td>
           <% else %>
             <td><%= attendance.opening_datetime.strftime("%m/%d") %></td>
@@ -69,7 +67,7 @@
             <td><%= attendance.over_time %></td>
             <td><%= attendance.break_time %></td>
             <td></td>
-            <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %></td>
+            <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm',method: :get  %></td>
             <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "削除", attendance_path(attendance.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-pink400_rsd btn-sm' %></td>
           <% end %>
         </tbody>

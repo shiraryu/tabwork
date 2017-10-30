@@ -3,11 +3,22 @@ class ConstructionsController < ApplicationController
   # constructionを保存、投稿するためのアクション
 
   def consttime
-    @construction = Construction.new #select_form
+    @construction = Construction.new  #select_form
     @constructions = Construction.all
+    #@attendances = @construction.worktime_aggregates_attendances.all
+    #if params[:construction]
+      #constdate_search = "#{params[:construction]["constdate_search(1i)"]}-#{params[:construction]["constdate_search(2i)"]}-#{params[:construction]["constdate_search(3i)"]}"
+      #@constructions = @attendances.where(opening_datetime: constdate_search.in_time_zone.all_month).order(:opening_datetime)
+    #else
+      #constdate_default = "#{Date.today.year}-#{Date.today.month}-#{01}"
+      #@constructions = @attendances.where(opening_datetime: constdate_default.in_time_zone.all_month).order(:opening_datetime)
+    #end
   end
 
   def consttime_detail
+    @construction = Construction.find(params[:construction_id])
+    @construction.worktime_aggregates.build
+    @constructions = Construction.all
   end
 
   def create
@@ -51,6 +62,7 @@ class ConstructionsController < ApplicationController
   def get_construction
     @constructions = Construction.where(workplace_id: params[:workplace_id])
     @select = params[:select_id]
+    @category = params[:category_id]
     render 'get_construction'
   end
 

@@ -45,7 +45,7 @@
       </tr>
       <%= f.nested_fields_for :worktime_aggregates, wrapper_tag: :tr do |q| %>
         <td><%= q.collection_select :id, Workplace.all,:id,:name,{prompt: "選択"}, {class: "form-control input-sm"} %></td>
-        <td><%= q.collection_select :construction_id, Construction.all,:id,:name ,{prompt: "選択"}, {class: "form-control input-sm"} %></td>
+        <td><%= q.collection_select :construction_id, Construction.all,:id,:name ,{prompt: "選択"}, {class: "form-control input-xs"} %></td>
         <td><%= q.number_field :constructiontime, class:'form-control input-sm',:step => 0.5,:value => 8.0,min: 0 %></td>
         <td><%= q.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button' %></td>
       <% end %>

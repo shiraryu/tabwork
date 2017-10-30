@@ -24,6 +24,7 @@
                   <% if user_signed_in? %>
                     <li><%= link_to "出退勤情報管理",attendances_path %></li>
                     <li><%= link_to "現場/工事管理",workplaces_path %></li>
+                    <li><%= link_to "工事時間管理" %></li>
                     <li><%= link_to '社員一覧', users_path %></li>
                     <li><%= link_to 'マイページ', edit_user_registration_path %></li>
                     <li><%= link_to'ログアウト',destroy_user_session_path,method: :delete %></li>
@@ -45,26 +46,27 @@
 
   <% if current_user %>   <!-- ユーザーがログイン中のみフッター表示 -->
   <footer>
-    <p>運営会社　タブリック株式会社</p>
+    <p>タブリック株式会社</p>
     <p>© 2015-2016 Copyright Tabric Corp.</p>
   </footer>
   <% end %>
 
-<script>
-  $(document).on('change', 'select#attendance_worktime_aggregates_attributes_0_id', function(e) {
-  // タグ番号取得
-    let id = e.target.id.match(/construction/)
-    id = $(this).val()
-  return $.ajax({
-    type: 'GET',
-    url: '/workplaces/' + id + '/constructions/:construction_id/get_construction',
-    data: {
-      workplace_id: $(this).val(),
-      select_id: id
-    }
-  })
-  });
-</script>
+  <script>
+    $(document).on('change', 'select.input-sm', function(e) {
+    // タグ番号取得
+      let category = e.target.id[42]
+      let id = $(this).val()
+    return $.ajax({
+      type: 'GET',
+      url: '/workplaces/' + id + '/constructions/:construction_id/get_construction',
+      data: {
+        workplace_id: $(this).val(),
+        select_id: id,
+        category_id: category
+      }
+    })
+    });
+  </script>
 
 </body>
 </html>
