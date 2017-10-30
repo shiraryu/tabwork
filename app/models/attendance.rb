@@ -26,9 +26,9 @@ class Attendance < ActiveRecord::Base
       attendances.where(holiday: false).count
     end
 
-    def self.sum_of_attendance_time_month(attendances)  #出勤時間合計
-      attendances.sum(:attendance_time)
-    end
+    #def self.sum_of_attendance_time_month(attendances)  #出勤時間合計
+      #attendances.sum(:attendance_time)
+    #end
     def self.sum_of_break_time(attendances)  #休憩時間合計
       attendances.sum(:break_time)
     end
