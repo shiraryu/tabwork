@@ -13,15 +13,13 @@
     <table class="table table-striped table-bordered table-hover">
       <tbody>
         <tr>
-          <th>現場</th>
           <th>工事内容</th>
         </tr>
         <% @constructions.each do |construction| %>
           <% if construction.worktime_aggregates(:constructiontime).exists? %>
-          <td><%= construction.workplace.name %></td>
-          <td><%= link_to controller: "constructions", action: "consttime_detail", construction_id: construction.id do %>
-            <%= construction.name %>
-          <% end %></td>
+          <tr><td><%= link_to controller: "constructions", action: "consttime_detail", construction_id: construction.id do %>
+            <%= construction.worktime_aggregate_constructions.id %>
+          <% end %></td></tr>
         <% end %>
       </tbody>
       <% end %>

@@ -8,7 +8,7 @@
         <tbody>
           <% @attendance.worktime_aggregates.each do |worktime_aggregate| %>
             <tr><td BgColor="#BFBFBF"><%= worktime_aggregate.construction.name %></td></tr>
-            <tr><td><%= worktime_aggregate.constructiontime %></td></tr>
+            <tr><td><%= worktime_aggregate.constructiontime.name %></td></tr>
           <% end %>
         </tbody>
       </table>
