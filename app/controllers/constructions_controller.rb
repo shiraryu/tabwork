@@ -4,23 +4,33 @@ class ConstructionsController < ApplicationController
 
   def consttime
     @construction = Construction.new  #select_form
-    #@constructions = Construction.all
-    @attendance = @construction.worktime_aggregates_attendances.build
-    @attendances = Attendance.all
+    @constructions = Construction.all
+    #@attendance = @construction.worktime_aggregates_attendances.build
+    #@attendances = Attendance.all
 
-    if params[:construction]
-      constdate_search = "#{params[:construction]["constdate_search(1i)"]}-#{params[:construction]["constdate_search(2i)"]}-#{params[:construction]["constdate_search(3i)"]}"
-      @constructions = @attendances.where(opening_datetime: constdate_search.in_time_zone.all_month).order(:opening_datetime)
-    else
-      constdate_default = "#{Date.today.year}-#{Date.today.month}-#{01}"
-      @constructions = @attendances.where(opening_datetime: constdate_default.in_time_zone.all_month).order(:opening_datetime)
-    end
+    #if params[:construction]
+      #constdate_search = "#{params[:construction]["constdate_search(1i)"]}-#{params[:construction]["constdate_search(2i)"]}-#{params[:construction]["constdate_search(3i)"]}"
+      #@constructions = @attendances.where(opening_datetime: constdate_search.in_time_zone.all_month).order(:opening_datetime)
+    #else
+      #constdate_default = "#{Date.today.year}-#{Date.today.month}-#{01}"
+      #@constructions = @attendances.where(opening_datetime: constdate_default.in_time_zone.all_month).order(:opening_datetime)
+    #end
   end
 
   def consttime_detail
     @construction = Construction.find(params[:construction_id])
-    @construction.worktime_aggregates.build
-    @constructions = Construction.all
+    #@construction.worktime_aggregates.build
+    #@constructions = Construction.all
+    #@attendance = @construction.attendances.build
+    #@attendance = Attendance.new
+
+    if params[:construction]
+      constdate_search = "#{params[:construction]["constdate_search(1i)"]}-#{params[:construction]["constdate_search(2i)"]}-#{params[:construction]["constdate_search(3i)"]}"
+      @attendances = Attendance.where(opening_datetime: constdate_search.in_time_zone.all_month).order(:opening_datetime)
+    else
+      constdate_default = "#{Date.today.year}-#{Date.today.month}-#{01}"
+      @attendances = Attendance.where(opening_datetime: constdate_default.in_time_zone.all_month).order(:opening_datetime)
+    end
   end
 
   def create
