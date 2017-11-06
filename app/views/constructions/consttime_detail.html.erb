@@ -26,9 +26,9 @@
             <th>日付</th>
             <th>時間合計/日</th>
           </tr>
-          <% @attendances.each do |attendance| %>
-            <td><%= attendance.opening_datetime.strftime("%m/%d") %></td>
-            <td><%= attendance.worktime_aggregates.where(construction_id:params[:construction_id]).constructiontime %></td>
+          <% @constructions.each do |construction| %>
+            <td><%= construction.worktime_aggregates.opening_datetime.strftime("%m/%d") %></td>
+            <td><%= construction.constructiontime %></td>
         </tbody>
         <% end %>
       </table>
