@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029053931) do
+ActiveRecord::Schema.define(version: 20171110125548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20171029053931) do
     t.float    "break_time"
     t.float    "attendance_time"
     t.date     "date_search"
+    t.date     "date"
   end
 
   create_table "constructions", force: :cascade do |t|
@@ -72,9 +73,10 @@ ActiveRecord::Schema.define(version: 20171029053931) do
   create_table "worktime_aggregates", force: :cascade do |t|
     t.integer  "construction_id"
     t.integer  "attendance_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.float    "constructiontime"
+    t.float    "sum_constructiontime"
   end
 
 end

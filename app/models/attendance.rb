@@ -1,5 +1,6 @@
 class Attendance < ActiveRecord::Base
   include ActiveRecord::Calculations
+  before_save :date_column
 
   validates_presence_of :opening_datetime
 
@@ -22,21 +23,26 @@ class Attendance < ActiveRecord::Base
     end
   end
 
-    def self.sum_of_attendance_date(attendances)  #出勤日数
-      attendances.where(holiday: false).count
-    end
+  def date_column  #dateカラムに成形して保存
+    date = read_attribute(:opening_datetime).to_date
+    write_attribute(:date, date)
+  end
 
+
+  def self.sum_of_attendance_date(attendances)  #出勤日数
+    attendances.where(holiday: false).count
+  end
     #def self.sum_of_attendance_time_month(attendances)  #出勤時間合計
       #attendances.sum(:attendance_time)
     #end
-    def self.sum_of_break_time(attendances)  #休憩時間合計
-      attendances.sum(:break_time)
-    end
-    def self.sum_of_over_time(attendances)  #残業合計
-      attendances.sum(:over_time)
-    end
-    def self.sum_of_holiday(attendances)  #休暇日数合計
-      attendances.where(holiday: true).count
-    end
+  def self.sum_of_break_time(attendances)  #休憩時間合計
+    attendances.sum(:break_time)
+  end
+  def self.sum_of_over_time(attendances)  #残業合計
+    attendances.sum(:over_time)
+  end
+  def self.sum_of_holiday(attendances)  #休暇日数合計
+    attendances.where(holiday: true).count
+  end
 
 end

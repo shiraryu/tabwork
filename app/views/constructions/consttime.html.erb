@@ -19,7 +19,7 @@
         <% @constructions.each do |construction| %>
           <% if construction.worktime_aggregates(:constructiontime).exists? %>
           <tr><td><%= construction.workplace.name %></td>
-          <td><%= link_to controller: "constructions", action: "consttime_detail", construction_id: construction.id do %>
+          <td><%= link_to controller: "worktime_aggregates", action: "index", construction_id: construction.id do %>
               <%= construction.name %></td></tr>
           <% end %>
           <% end %>

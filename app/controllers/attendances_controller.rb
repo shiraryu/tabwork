@@ -66,7 +66,7 @@ class AttendancesController < ApplicationController
 
   private
     def attendances_params
-      params.require(:attendance).permit(:opening_datetime,:closing_datetime,:over_time,:break_time,:holiday,:attendance_time,:date_search, worktime_aggregates_attributes:[:select_workplace, :construction_id,:constructiontime,:attendance_id,:_destroy,:construction])
+      params.require(:attendance).permit(:opening_datetime,:closing_datetime,:over_time,:break_time,:holiday,:attendance_time,:date_search,:date, worktime_aggregates_attributes:[:select_workplace, :construction_id,:constructiontime,:attendance_id,:_destroy,:construction])
     end
     def set_attendance
       @attendance = Attendance.find(params[:id])

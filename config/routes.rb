@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   resources :users,only:[:index,:show]
 
+  resources :worktime_aggregates,only:[:index]
+
   resources :attendances do
     get 'detail'
     post :confirm ,on: :collection

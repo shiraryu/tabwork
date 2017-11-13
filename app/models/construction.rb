@@ -5,8 +5,5 @@ class Construction < ActiveRecord::Base
   has_many :worktime_aggregates
   belongs_to :workplace
 
-  def self.sum_of_constructiontime_date(constructions)  #出勤日数
-    constructions.sum(:constructiontime)
-  end
 
 end
