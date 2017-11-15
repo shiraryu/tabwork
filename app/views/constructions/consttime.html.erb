@@ -15,12 +15,15 @@
         <tr>
           <th>現場</th>
           <th>工事内容</th>
+          <th>月合計時間</th>
         </tr>
         <% @constructions.each do |construction| %>
           <% if construction.worktime_aggregates(:constructiontime).exists? %>
           <tr><td><%= construction.workplace.name %></td>
-          <td><%= link_to controller: "worktime_aggregates", action: "index", construction_id: construction.id do %>
-              <%= construction.name %></td></tr>
+          <td><%= link_to controller: "worktime_aggregates", action: "index", construction_id: construction.id, start_year: @start_year ,start_month: @start_month, start_date: @start_date do %>
+              <%= construction.name %></td>
+          <td><%= WorktimeAggregate.sum_of_constructiontimes(construction.id, @start_date, @start_year, @start_month) %></td>
+          </tr>
           <% end %>
           <% end %>
         <% end %>

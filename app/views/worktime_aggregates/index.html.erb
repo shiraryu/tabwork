@@ -1,18 +1,8 @@
 <div class = "container">
   <div class = "wrapper col-md-12 col-sm-10">
   <p> <%= notice %> </p>
-    <h3>の作業時間</h3>
-    <br>
-    <br>
 
-    <table class="table table-striped table-bordered table-hover">
-    <tbody>
-      <tr>
-        <th>時間合計/月</th>
-      </tr>
-        <td></td>
-    </tbody>
-    </tabale>
+    <h3>の作業時間</h3>
     <br>
     <br>
       <table class="table table-striped table-bordered table-hover">
@@ -22,8 +12,11 @@
             <th>時間合計/日</th>
           </tr>
           <% @worktime_aggregates.each do |worktime_aggregate| %>
-            <td></td>
-            <td><%= worktime_aggregate.sum_of_constructiontime %></td>
+          <%#binding.pry%>
+          <tr>
+            <td><%= worktime_aggregate[:day] %></td>
+            <td><%= worktime_aggregate[:time] %></td>
+          </tr>
           <% end %>
         </tbody>
       </table>

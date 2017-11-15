@@ -17,7 +17,7 @@
           </tr>
           <% @attendances.each do |attendance| %>
           <% if attendance.holiday == true %>
-            <td><%= attendance.opening_datetime.strftime("%m/%d") %></td>
+            <td><%= attendance.opening_datetime.strftime("%m月%d日") %></td>
             <td></td>
             <td></td>
             <td></td>

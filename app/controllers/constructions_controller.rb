@@ -5,9 +5,22 @@ class ConstructionsController < ApplicationController
   def consttime
     @construction = Construction.new  #select_form
     @constructions = Construction.all
-    #@attendances = Attendance.all
+
+    if params[:construction]
+      @start_date = "#{params[:construction]["constdate_search(1i)"]}-#{params[:construction]["constdate_search(2i)"]}-#{params[:construction]["constdate_search(3i)"]}"
+      @start_year =  "#{params[:construction]["constdate_search(1i)"]}".to_i  #model用に成形
+      @start_month = "#{params[:construction]["constdate_search(2i)"]}".to_i  #model用に成形
+    else                                                                      #default時の設定
+      @start_date  = nil
+      @start_year  = nil
+      @start_month = nil
+    end
   end
 
+
+  #
+  # TODO: 消す
+  #
   def consttime_detail
     constructions = Construction.worktime_aggregate.sum_of_constructiontime
 
