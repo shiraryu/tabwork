@@ -7,14 +7,7 @@ class WorktimeAggregatesController < ApplicationController
     @construction_id = params[:construction_id]  #view用
 
     @worktime_aggregates = WorktimeAggregate.sum_of_constructiontime(@construction_id, @start_date, @start_year, @start_month)
-    # binding.pry
-
-
-
-    @constructions = Construction.find(params[:construction_id]).worktime_aggregates.joins(:attendance) #test
-    # @worktime_aggregates = WorktimeAggregate.all.order(@start_date)
+    @construction = Construction.find(params[:construction_id])
 
   end
 end
-
-#.find(params[:construction_id])

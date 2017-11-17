@@ -2,15 +2,12 @@
   <div class = "wrapper col-md-12 col-sm-10">
   <p> <%= notice %> </p>
 
-  <p><%= link_to "工事時間管理", consttime_workplace_constructions_path(@workplaces) %></p>
-  <br>
-
   <h3>現場一覧</h3>
   <br>
-    <%= link_to "新規登録",new_workplace_path,class:'btn btn-default btn-brown300_rsd btn-sm' 'style=font-size:15px;' %>
+    <%= link_to "新規登録",class:'btn btn-default btn-brown300_rsd btn-sm' 'style=font-size:15px;' %>
     <br>
     <br>
-    <% @workplaces.each do |workplace| %>
+    <!--<% @workplaces.each do |workplace| %>
       <br>
       <br>
       <%= link_to workplace_path(workplace) do %>
@@ -20,7 +17,7 @@
       <%= link_to "編集",edit_workplace_path(workplace.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %>
       <%= link_to "削除", workplace_path(workplace.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-pink400_rsd btn-sm' %>
     <% end %>
-  </div>
+  </div>-->
   <div id="page-top-btn" class="page-top-btn">
     <p><a class="move-page-top" id="move-page-top">▲</a></p>
   </div>

@@ -11,30 +11,19 @@ class WorktimeAggregate < ActiveRecord::Base
     end
   end
 
-  def self.sum_of_constructiontime(construction_id, start_date, start_year, start_month) #日毎集計
-    results = []
+  def self.sum_of_constructiontime(construction_id, start_date, start_year, start_month) #constructiontime日毎集計
+    results = []  #配列変数定義
     end_date = Date.new(start_year,start_month,-1) #paramsから月末計算
     end_day = (end_date).day #end_dateの日のみ取得
     (start_date.to_date..start_date.to_date + (end_day-1)).each do |day|  #日付のループ取得
-      result = {}
-      start_time = day.beginning_of_day.to_s
-      end_time = day.end_of_day.to_s
-      result[:day] = day
-      result[:time] = joins(:attendance).where("attendances.opening_datetime >= :start AND attendances.opening_datetime <= :end", {start: start_time, end:  end_time}).where(construction_id: construction_id).sum(:constructiontime)
-      results << result
-
+      result = {}   #ハッシュ変数定義
+      start_time = day.beginning_of_day.to_s #1日の始まり成形
+      end_time = day.end_of_day.to_s   #1日の終わり成形
+      result[:day] = day  #キーをdayとしてハッシュ内に入れる
+      result[:time] = joins(:attendance).where("attendances.opening_datetime >= :start AND attendances.opening_datetime <= :end", {start: start_time, end:  end_time}).where(construction_id: construction_id).sum(:constructiontime)  #集計
+      results << result #ハッシュを配列内に代入
     end
-    results
-    # days = (start_date.to_date..start_date.to_date + (end_day-1)).each {|da| puts da} #1日ごとのループ
-
-
-
-      # start_time = Date.new(start_year,start_month,day).beginning_of_day.to_s
-      # end_time = Date.new(start_year,start_month,day).end_of_day.to_s
-      #
-      # joins(:attendance).where("attendancesopening_datetime >= :start AND attendances.opening_datetime <= :end", {start: start_time, end:      end_time}).where(construction_id: construction_id).sum(:constructiontime)
-
-
+    results  #return
   end
 
   def self.sum_of_constructiontime_sql

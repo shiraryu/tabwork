@@ -24,7 +24,6 @@
                   <% if user_signed_in? %>
                     <li><%= link_to "出退勤情報管理",attendances_path %></li>
                     <li><%= link_to "現場/工事管理",workplaces_path %></li>
-                    <li><%= link_to "工事時間管理" %></li>
                     <li><%= link_to '社員一覧', users_path %></li>
                     <li><%= link_to 'マイページ', edit_user_registration_path %></li>
                     <li><%= link_to'ログアウト',destroy_user_session_path,method: :delete %></li>

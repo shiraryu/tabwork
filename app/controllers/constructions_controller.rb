@@ -5,37 +5,14 @@ class ConstructionsController < ApplicationController
   def consttime
     @construction = Construction.new  #select_form
     @constructions = Construction.all
-
     if params[:construction]
       @start_date = "#{params[:construction]["constdate_search(1i)"]}-#{params[:construction]["constdate_search(2i)"]}-#{params[:construction]["constdate_search(3i)"]}"
       @start_year =  "#{params[:construction]["constdate_search(1i)"]}".to_i  #model用に成形
       @start_month = "#{params[:construction]["constdate_search(2i)"]}".to_i  #model用に成形
     else                                                                      #default時の設定
-      @start_date  = nil
-      @start_year  = nil
-      @start_month = nil
-    end
-  end
-
-
-  #
-  # TODO: 消す
-  #
-  def consttime_detail
-    constructions = Construction.worktime_aggregate.sum_of_constructiontime
-
-    #@construction.worktime_aggregates.build
-    #@constructions = Construction.all
-    #@attendance = @construction.attendances.build
-    #@attendance = Attendance.new
-    #WorktimeAgreegate.joins(:テーブル名).where(opening_time: 時間)
-
-    if params[:construction]
-      constdate_search = "#{params[:construction]["constdate_search(1i)"]}-#{params[:construction]["constdate_search(2i)"]}-#{params[:construction]["constdate_search(3i)"]}"
-      @attendances = Attendance.where(date: constdate_search.in_time_zone.all_month).order(:date).find_by_sql(sum_of_constructiontime)
-    else
-      constdate_default = "#{Date.today.year}-#{Date.today.month}-#{01}"
-      @attendances = Attendance.where(date: constdate_default.in_time_zone.all_month).order(:date)
+      @start_date  = Date.today.beginning_of_month
+      @start_year  = Date.today.year
+      @start_month = Date.today.month
     end
   end
 

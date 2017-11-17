@@ -4,7 +4,7 @@
   <h3>工事別時間集計・管理</h3>
   <br>
   <div class = "select_form">
-    <%= form_for(@construction,url:workplace_construction_consttime_path, :method => 'get') do |f| %>
+    <%= form_for(@construction,url: consttime_workplace_constructions_path, :method => 'get') do |f| %>
       <p><%= f.date_select :constdate_search,{:discard_day=>true,:start_year=>2017,:default=>Time.now} %>
       <%= f.submit '検索',class: "btn btn-white_rsd btn-sm" %></p>
     <% end %>
