@@ -64,4 +64,3 @@ gem 'faker'
 gem 'nested_form_fields'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
-gem 'by_star', git: "git://github.com/radar/by_star"

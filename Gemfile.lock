@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/radar/by_star
-  revision: 1807d93f0a1e0d68c7ffe93b97b94f48e8234e81
-  specs:
-    by_star (2.2.1)
-      activesupport
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -294,7 +287,6 @@ DEPENDENCIES
   activeresource
   better_errors
   bootstrap3-datetimepicker-rails
-  by_star!
   byebug
   cancan
   carrierwave
