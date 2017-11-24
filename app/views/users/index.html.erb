@@ -1,10 +1,16 @@
 <div class="container">
-  <h2>社員一覧</h2>
+  <h3>社員一覧</h3>
+  <br>
+  <br>
   <% @users.each do |user| %>
   <% if user.id != current_user.id %>
     <li style = "list-style-type: none;">
       <div class="item">
-        <%= link_to user.name, user %>
+        <% if current_user.try(:admin?) %>
+          <%= link_to user.name, controller: "attendances", action: "index", user_id: user.id %>
+        <% else %>
+          <%= link_to user.name,attendances_path %>
+        <% end %>
       </div>
     </li>
   <% end %>

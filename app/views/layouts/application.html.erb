@@ -20,13 +20,15 @@
               <li class="dropdown"style="max-width: 100px;float: right;">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MENU<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to "社員登録" %></li>
                   <% if user_signed_in? %>
-                    <li><%= link_to "出退勤情報管理",attendances_path %></li>
-                    <li><%= link_to "現場/工事管理",workplaces_path %></li>
-                    <li><%= link_to '社員一覧', users_path %></li>
-                    <li><%= link_to 'マイページ', edit_user_registration_path %></li>
                     <li><%= link_to'ログアウト',destroy_user_session_path,method: :delete %></li>
+                    <li><%= link_to "出退勤情報管理",attendances_path %></li>
+                    <% if current_user.try(:admin?) %>
+                      <li><%= link_to "現場/工事管理",workplaces_path %></li>
+                      <li><%= link_to "社員一覧", users_path %></li>
+                      <li><%= link_to 'マイページ', edit_user_registration_path %></li>
+                      <li><%= link_to "全体管理",rails_admin_path,target: '_self' %></li> <!-- admin display崩れ対策 -- >
+                    <% end %>
                   <% else %>
                     <li><%= link_to 'ログイン', new_user_session_path  %></li>
                     <li><%= link_to 'サインアップ', new_user_registration_path %></li>
@@ -49,23 +51,5 @@
     <p>© 2015-2016 Copyright Tabric Corp.</p>
   </footer>
   <% end %>
-
-  <script>
-    $(document).on('change', 'select.input-sm', function(e) {
-    // タグ番号取得
-      let category = e.target.id[42]
-      let id = $(this).val()
-    return $.ajax({
-      type: 'GET',
-      url: '/workplaces/' + id + '/constructions/:construction_id/get_construction',
-      data: {
-        workplace_id: $(this).val(),
-        select_id: id,
-        category_id: category
-      }
-    })
-    });
-  </script>
-
 </body>
 </html>

@@ -7,7 +7,14 @@ class Attendance < ActiveRecord::Base
   has_many :worktime_aggregates,dependent: :destroy
   has_many :worktime_aggregate_constructions,through: :worktime_aggregates,source: :construction
   belongs_to :user
-  accepts_nested_attributes_for :worktime_aggregates, allow_destroy: true
+  accepts_nested_attributes_for :worktime_aggregates,reject_if: :reject_worktime_aggregates, allow_destroy: true
+
+  def reject_worktime_aggregates(attributes)
+    exists = attributes[:id].present?
+    empty = attributes[:constructiontime].blank?
+    attributes.merge!(_destroy: 1) if exists && empty
+    !exists && empty
+  end
 
   def sum_of_attendance_time
     (((closing_datetime - opening_datetime) / 60 / 60) - (break_time.to_f) - (over_time.to_f)).to_f

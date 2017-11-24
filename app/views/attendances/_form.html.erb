@@ -13,13 +13,13 @@
   <% end %>
 
   <%= f.label :出勤日時 %>
-  <div class='input date datetimepicker'>
-    <%= f.text_field :opening_datetime, class: 'form-control datetimepicker' %>
+  <div class='input date datetimepicker_opening'>
+    <%= f.text_field :opening_datetime, class: 'form-control datetimepicker_opening' %>
   </div>
   <br>
   <%= f.label :退勤日時 %>
-  <div class='input date datetimepicker'>
-    <%= f.text_field :closing_datetime, class:'form-control datetimepicker' %>
+  <div class='input date datetimepicker_closing'>
+    <%= f.text_field :closing_datetime, class:'form-control datetimepicker_closing' %>
   </div>
   <br>
   <table class="table table-striped table-bordered table-hover">
@@ -47,12 +47,13 @@
         <td><%= q.collection_select :id, Workplace.all,:id,:name,{prompt: "選択"}, {class: "form-control input-sm"} %></td>
         <td><%= q.collection_select :construction_id, Construction.all,:id,:name ,{prompt: "選択"}, {class: "form-control input-xs"} %></td>
         <td><%= q.number_field :constructiontime, class:'form-control input-sm',:step => 0.5,:value => 8.0,min: 0 %></td>
-        <td><%= q.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button' %></td>
+        <td><%= q.remove_nested_fields_link '削除', class: 'btn btn-orange900_rsd', role: 'button' %></td>
       <% end %>
     </tbody>
   </table>
-  <%= f.add_nested_fields_link :worktime_aggregates, '追加', class: 'btn btn-primary', role: 'button' %>
+  <br>
+  <%= f.add_nested_fields_link :worktime_aggregates, '追加', class: 'btn btn-blue700_rsd', role: 'button' %>
   <br>
   <br>
-  <%= f.submit '登録する', class: 'btn btn-primary btn-md' %>
+  <%= f.submit '登録する', class: 'btn btn-teal500_rsd btn-md' %>
 <% end %>

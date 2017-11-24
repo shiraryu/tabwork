@@ -4,7 +4,7 @@ class ConstructionsController < ApplicationController
 
   def consttime
     @construction = Construction.new  #select_form
-    @constructions = Construction.all
+    @constructions = Construction.order(:workplace_id)
     if params[:construction]
       @start_date = "#{params[:construction]["constdate_search(1i)"]}-#{params[:construction]["constdate_search(2i)"]}-#{params[:construction]["constdate_search(3i)"]}"
       @start_year =  "#{params[:construction]["constdate_search(1i)"]}".to_i  #model用に成形

@@ -21,11 +21,46 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).on('turbolinks:load',$(function(){
-  $('.datetimepicker').datetimepicker({
+
+$(document).on('change', 'select.input-sm', function(e) {
+// タグ番号取得
+  let category = e.target.id[42]
+  let id = $(this).val()
+return $.ajax({
+  type: 'GET',
+  url: '/workplaces/' + id + '/constructions/:construction_id/get_construction',
+  data: {
+    workplace_id: $(this).val(),
+    select_id: id,
+    category_id: category
+  }
+})
+});
+
+var dateNow = new Date();
+$(document).on('turbolinks:load',(function(){
+  $('.datetimepicker_opening').datetimepicker({
     format : "YYYY/MM/DD HH:mm",
     sideBySide: true,
     stepping: 30,
+    defaultDate:moment(dateNow).hours(8).minutes(0),
+    icons: {
+      time: "fa fa-clock-o",
+      date: "fa fa-calendar",
+      up: "fa fa-arrow-up",
+      down: "fa fa-arrow-down",
+      previous: "fa fa-arrow-left",
+      next: "fa fa-arrow-right",
+    }
+  })
+}));
+
+$(document).on('turbolinks:load',(function(){
+  $('.datetimepicker_closing').datetimepicker({
+    format : "YYYY/MM/DD HH:mm",
+    sideBySide: true,
+    stepping: 30,
+    defaultDate:moment(dateNow).hours(17).minutes(0),
     icons: {
       time: "fa fa-clock-o",
       date: "fa fa-calendar",

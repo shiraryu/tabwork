@@ -3,7 +3,11 @@
   <p> <%= notice %> </p>
     <h3>作業情報一覧（個人）</h3>
     <br>
-    <%= link_to "戻る",attendances_path,method: :get %>
+    <% if current_user.try(:admin?) %>
+      <%= link_to "戻る", controller: "attendances", action: "index", user_id: @user.id %>
+    <% else %>
+      <%= link_to "戻る",attendances_path %>
+    <% end %>
     <br>
     <br>
     <br>
@@ -17,20 +21,24 @@
           </tr>
           <% @attendances.each do |attendance| %>
           <% if attendance.holiday == true %>
-            <td><%= attendance.opening_datetime.strftime("%m月%d日") %></td>
+            <td><%= attendance.opening_datetime.strftime("%m/%d") %></td>
             <td></td>
             <td></td>
             <td></td>
-            <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %></td>
-            <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "削除", attendance_path(attendance.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-pink400_rsd btn-sm' %></td>
+            <% if current_user.try(:admin?) %>
+              <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %></td>
+              <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "削除", attendance_path(attendance.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-pink400_rsd btn-sm' %></td>
+            <% end %>
           <% else %>
             <td><%= attendance.opening_datetime.strftime("%m/%d") %></td>
             <td><%= attendance.worktime_aggregates.first.construction.workplace.name %></td>
             <td><%= attendance.worktime_aggregate_constructions.count %></d>
             <td><%= attendance.worktime_aggregates.sum(:constructiontime) %></td>
-            <td class = "attendance_button"><%= link_to "詳細",attendance_detail_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %></td>
-            <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %></td>
-            <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "削除", attendance_path(attendance.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-pink400_rsd btn-sm' %></td>
+            <td class = "attendance_button"><%= link_to "詳細",attendance_detail_path(attendance.id),class:'btn btn-default btn-blue600_rsd btn-sm' %></td>
+            <% if current_user.try(:admin?) %>
+              <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %></td>
+              <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "削除", attendance_path(attendance.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-pink400_rsd btn-sm' %></td>
+            <% end %>
           <% end %>
         </tbody>
         <% end %>
