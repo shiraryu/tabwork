@@ -26,8 +26,8 @@
             <td></td>
             <td></td>
             <% if current_user.try(:admin?) %>
-              <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %></td>
-              <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "削除", attendance_path(attendance.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-pink400_rsd btn-sm' %></td>
+              <td class = "attendance_button hidden-xs"><%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %></td>
+              <td class = "attendance_button hidden-xs"><%= link_to "削除", attendance_path(attendance.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-pink400_rsd btn-sm' %></td>
             <% end %>
           <% else %>
             <td><%= attendance.opening_datetime.strftime("%m/%d") %></td>
@@ -36,8 +36,8 @@
             <td><%= attendance.worktime_aggregates.sum(:constructiontime) %></td>
             <td class = "attendance_button"><%= link_to "詳細",attendance_detail_path(attendance.id),class:'btn btn-default btn-blue600_rsd btn-sm' %></td>
             <% if current_user.try(:admin?) %>
-              <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %></td>
-              <td class = "attendance_button hidden-xs hidden-sm"><%= link_to "削除", attendance_path(attendance.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-pink400_rsd btn-sm' %></td>
+              <td class = "attendance_button hidden-xs"><%= link_to "編集",edit_attendance_path(attendance.id),class:'btn btn-default btn-cyan700_rsd btn-sm' %></td>
+              <td class = "attendance_button hidden-xs"><%= link_to "削除", attendance_path(attendance.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default   btn-pink400_rsd btn-sm' %></td>
             <% end %>
           <% end %>
         </tbody>
