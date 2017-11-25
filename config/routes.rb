@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   end
 
   devise_scope :user do                                                  # User非ログイン中はサインアップ画面をtop画面とする設定
-    root :to => "registrations/registrations#new"             # deviseのsessionscontrollerに飛ばしている(userディレクトリ制作済みのため、sessionsディレクトリ)
+    root :to => "users/registrations#new"             # deviseのsessionscontrollerに飛ばしている(userディレクトリ制作済みのため、sessionsディレクトリ)
   end
 
 end
