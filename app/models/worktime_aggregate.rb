@@ -20,12 +20,11 @@ class WorktimeAggregate < ActiveRecord::Base
     #binding.pry
     (start_date.to_date..start_date.to_date + (end_day-1)).each do |day|  #日付のループ取得
       result = {}   #ハッシュ変数定義
-      start_time = (day.beginning_of_day - 9.hours).to_s #1日の始まり成形
-      end_time = (day.end_of_day - 9.hours).to_s   #1日の終わり成形
-      result[:day] = day  #キーをdayとしてハッシュ内に入れる
-
-      result[:time] = joins(:attendance).where("attendances.opening_datetime >= :start AND attendances.opening_datetime <= :end", {start: start_time, end:  end_time}).where(construction_id: construction_id).sum(:constructiontime)  #集計
+      start_time = (day.beginning_of_day).to_s #1日の始まり成形
+      end_time = (day.end_of_day).to_s   #1日の終わり成形
       #binding.pry
+      result[:day] = day  #キーをdayとしてハッシュ内に入れる
+      result[:time] = joins(:attendance).where("attendances.opening_datetime >= :start AND attendances.opening_datetime <= :end", {start: start_time, end:  end_time}).where(construction_id: construction_id).sum(:constructiontime)  #集計
       results << result #ハッシュを配列内に代入
     end
     results  #return
