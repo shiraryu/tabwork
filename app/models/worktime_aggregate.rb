@@ -5,11 +5,11 @@ class WorktimeAggregate < ActiveRecord::Base
   def self.sum_of_constructiontimes(construction_id, start_date = nil, start_year = nil, start_month = nil) #constructiontime月集計
 
     if start_date == nil && start_year == nil && start_month = nil #default
-      joins(:attendance).where("attendances.opening_datetime >= :start AND attendances.opening_datetime <= :end", {start: Time.zone.today.beginning_of_month, end: Time.zone.today.end_of_month + 1}).where(construction_id: construction_id).sum(:constructiontime)
+      joins(:attendance).where("attendances.opening_datetime >= :start AND attendances.opening_datetime <= :end", {start: Time.zone.today.beginning_of_month, end: Time.zone.today.end_of_month + 9.hours}).where(construction_id: construction_id).sum(:constructiontime)
     else
       #binding.pry
       end_date = Date.new(start_year,start_month,-1)
-      end_date_1 = (end_date + 1).to_s  #select
+      end_date_1 = (end_date + 9.hours).to_s  #select
       joins(:attendance).where("attendances.opening_datetime >= :start AND attendances.opening_datetime <= :end", {start: start_date, end: end_date_1}).where(construction_id: construction_id).sum(:constructiontime)
     end
   end
