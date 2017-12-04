@@ -13,7 +13,7 @@
     <br>
     <div class = "select_form">
       <% if @attendances.first == nil %>  <!-- 選択月の勤怠が未入力なら戻るボタン表示 -->
-        <%= link_to "戻る",attendances_path(:user_id => @user.id) %>
+        <%= link_to "戻る",users_path %>
       <% else %>
         <%= form_for(@attendances.first,url:attendances_path, :method => 'get') do |f| %>
           <%= f.date_select :date_search,{:discard_day=>true,:start_year=>2017,selected: @attendances.first.date} %>
