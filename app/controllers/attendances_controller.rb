@@ -4,6 +4,7 @@ class AttendancesController < ApplicationController
 
   def index
     @user = User.find_by(id: params[:user_id])
+    #binding.pry
     @attendance = Attendance.new #select_form
     if current_user.try(:admin?)
       if params[:user_id]
@@ -88,7 +89,7 @@ class AttendancesController < ApplicationController
 
   def destroy
     @attendance.destroy
-    redirect_to attendances_path, notice:"削除しました"
+    redirect_to users_path, notice:"削除しました"
   end
 
   def confirm

@@ -1,19 +1,23 @@
 <div class = "container">
   <div class = "wrapper col-md-12 col-sm-10">
   <p> <%= notice %> </p>
-    <h3>出退勤情報一覧</h3>
+    <% unless @user == nil %>
+      <h3><%= @user.name %>　出退勤情報一覧</h3>
+    <% else %>
+      <h3><%= current_user.name %>　出退勤情報一覧</h3>
+    <% end %>
     <br>
     <br>
       <%= link_to "新規登録",new_attendance_path,class:'btn btn-default btn-orange900_rsd btn-sm' 'style=font-size:15px;',method: :get %>
     <br>
     <br>
     <div class = "select_form">
-
       <% if @attendances.first == nil %>  <!-- 選択月の勤怠が未入力なら戻るボタン表示 -->
-        <%= link_to "戻る",attendances_path %>
+        <%= link_to "戻る",attendances_path(:user_id => @user.id) %>
       <% else %>
         <%= form_for(@attendances.first,url:attendances_path, :method => 'get') do |f| %>
-          <p><%= f.date_select :date_search,{:discard_day=>true,:start_year=>2017,selected: @attendances.first.date} %>
+          <%= f.date_select :date_search,{:discard_day=>true,:start_year=>2017,selected: @attendances.first.date} %>
+          <%= hidden_field_tag :user_id, @attendances.first.user_id %>
           <%= f.submit '検索',class: "btn btn-white_rsd btn-xs" %></p>
         <% end %>
       <% end %>

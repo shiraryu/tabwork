@@ -6,10 +6,10 @@
     <br>
     <br>
     <div class = "pull-left">
-      <h4>表示年月：<%= @start_year %>年<%= @start_month %>月</h4>
-      <br>
+      <h5>　表示年月：<%= @start_year %>年<%= @start_month %>月</h5>
+      <h5>時間合計：<%= WorktimeAggregate.sum_of_constructiontimes(@construction.id, @start_date, @start_year, @start_month) %>時間</h5>
+      <h5>現場：<%= @construction.workplace.name %>　　</h5>
     </div>
-    <%= WorktimeAggregate.sum_of_constructiontimes(@construction.id, @start_date, @start_year, @start_month) %>
       <table class="table table-striped table-bordered table-hover">
         <tbody>
           <tr>
