@@ -4,7 +4,6 @@ class AttendancesController < ApplicationController
 
   def index
     @user = User.find_by(id: params[:user_id])
-    #binding.pry
     @attendance = Attendance.new #select_form
     if current_user.try(:admin?)
       if params[:user_id]
