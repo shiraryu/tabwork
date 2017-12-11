@@ -66,3 +66,4 @@ gem 'nested_form_fields'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 gem "font-awesome-rails"
+gem 'rails-i18n'

@@ -1,13 +1,28 @@
 class Attendance < ActiveRecord::Base
   include ActiveRecord::Calculations
-  before_save :date_column
 
-  validates_presence_of :opening_datetime
+  before_save :date_column
 
   has_many :worktime_aggregates,dependent: :destroy
   has_many :worktime_aggregate_constructions,through: :worktime_aggregates,source: :construction
   belongs_to :user
   accepts_nested_attributes_for :worktime_aggregates,reject_if: :reject_worktime_aggregates, allow_destroy: true
+
+
+  validates_presence_of :opening_datetime,:closing_datetime,:over_time,:break_time,if: :holiday_false?
+
+  def holiday_false?
+    #binding.pry
+    holiday == false
+  end
+
+
+  validates_presence_of :opening_datetime,if: :holiday_true?
+
+  def holiday_true?
+    holiday == true
+  end
+
 
   def reject_worktime_aggregates(attributes)
     exists = attributes[:id].present?

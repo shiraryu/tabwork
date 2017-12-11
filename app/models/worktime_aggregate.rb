@@ -2,6 +2,9 @@ class WorktimeAggregate < ActiveRecord::Base
   belongs_to :attendance
   belongs_to :construction
 
+
+  validates_presence_of :construction_id
+
   def self.sum_of_constructiontimes(construction_id, start_date = nil, start_year = nil, start_month = nil) #constructiontime月集計
 
     if start_date == nil && start_year == nil && start_month = nil #default

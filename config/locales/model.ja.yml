@@ -1,17 +1,17 @@
 ja:
   activerecord:
     models:
-      blog: "ブログ"
       contact: "お問い合わせ"
       user: "ユーザー"
     attributes:
-      topic:
-        title: "タイトル"
-        content: "内容"
-      contact:
-        name: "名前"
-        email: "メールアドレス"
-        content: "内容"
+      attendance:
+        opening_datetime: "出勤時間"
+        closing_datetime: "退勤時間"
+        over_time: "時間外勤務"
+        break_time: "休憩時間"
+      worktime_aggregates:
+        construction_id: "現場・工事"
+        constructiontime: "作業時間"
       user:
         title: "タイトル"
         name: "名前"
@@ -21,11 +21,7 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
-      topic:
-        content: "本文"
-        topicimage: "写真"
-        photo: 写真
-      comment:
-        content: "コメント内容"
       workplace:
         name: "現場名"
+      construction:
+        name: "工事名"
