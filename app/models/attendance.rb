@@ -1,7 +1,7 @@
 class Attendance < ActiveRecord::Base
   include ActiveRecord::Calculations
 
-  before_save :date_column,:sum_of_attendance_time,:attendance_time
+  before_save :date_column,:attendance_time
 
   has_many :worktime_aggregates,dependent: :destroy
   has_many :worktime_aggregate_constructions,through: :worktime_aggregates,source: :construction
@@ -29,18 +29,22 @@ class Attendance < ActiveRecord::Base
   end
 
   def sum_of_attendance_time
-    (((closing_datetime - opening_datetime) / 60 / 60) - (break_time.to_f) - (over_time.to_f)).to_f
+    unless closing_datetime == nil
+      (((closing_datetime - opening_datetime) / 60 / 60) - (break_time.to_f) - (over_time.to_f)).to_f
+    end
   end
 
   def attendance_time
-    if sum_of_attendance_time > 8
-      time = 8.0
-    elsif sum_of_attendance_time < 0
-      time = 0.0
-    else
-      time = (((closing_datetime - opening_datetime) / 60 / 60) - (break_time.to_f) - (over_time.to_f)).to_f
+    unless closing_datetime == nil
+      if sum_of_attendance_time > 8
+        time = 8.0
+      elsif sum_of_attendance_time < 0
+        time = 0.0
+      else
+        time = (((closing_datetime - opening_datetime) / 60 / 60) - (break_time.to_f) - (over_time.to_f)).to_f
+      end
+      write_attribute(:attendance_time, time)  #attendance_timeカラムにsave前に値を代入（書き込み）
     end
-    write_attribute(:attendance_time, time)  #attendance_timeカラムにsave前に値を代入（書き込み）
   end
 
   def date_column  #dateカラムに成形して保存
