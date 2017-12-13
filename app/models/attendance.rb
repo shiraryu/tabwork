@@ -1,13 +1,12 @@
 class Attendance < ActiveRecord::Base
   include ActiveRecord::Calculations
 
-  before_save :date_column
+  before_save :date_column,:sum_of_attendance_time,:attendance_time
 
   has_many :worktime_aggregates,dependent: :destroy
   has_many :worktime_aggregate_constructions,through: :worktime_aggregates,source: :construction
   belongs_to :user
   accepts_nested_attributes_for :worktime_aggregates,reject_if: :reject_worktime_aggregates, allow_destroy: true
-
 
   validates_presence_of :opening_datetime,:closing_datetime,:over_time,:break_time,if: :holiday_false?
 
@@ -16,13 +15,11 @@ class Attendance < ActiveRecord::Base
     holiday == false
   end
 
-
   validates_presence_of :opening_datetime,if: :holiday_true?
 
   def holiday_true?
     holiday == true
   end
-
 
   def reject_worktime_aggregates(attributes)
     exists = attributes[:id].present?
@@ -37,12 +34,13 @@ class Attendance < ActiveRecord::Base
 
   def attendance_time
     if sum_of_attendance_time > 8
-      8.0
+      time = 8.0
     elsif sum_of_attendance_time < 0
-      0.0
+      time = 0.0
     else
-    (((closing_datetime - opening_datetime) / 60 / 60) - (break_time.to_f) - (over_time.to_f)).to_f
+      time = (((closing_datetime - opening_datetime) / 60 / 60) - (break_time.to_f) - (over_time.to_f)).to_f
     end
+    write_attribute(:attendance_time, time)  #attendance_timeカラムにsave前に値を代入（書き込み）
   end
 
   def date_column  #dateカラムに成形して保存
@@ -54,9 +52,10 @@ class Attendance < ActiveRecord::Base
   def self.sum_of_attendance_date(attendances)  #出勤日数
     attendances.where(holiday: false).count
   end
-    #def self.sum_of_attendance_time_month(attendances)  #出勤時間合計
-      #attendances.sum(:attendance_time)
-    #end
+  def self.sum_of_attendance_time_month(attendances)  #出勤時間合計
+    attendances.sum(:attendance_time)
+    #binding.pry
+  end
   def self.sum_of_break_time(attendances)  #休憩時間合計
     attendances.sum(:break_time)
   end

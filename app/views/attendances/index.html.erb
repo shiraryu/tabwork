@@ -34,12 +34,13 @@
     <tbody>
       <tr>
         <th>出勤日数</th>
-        <!-- <th>定時内計</th> -->
+        <th>定時内計</th>
         <th>残業計</th>
-        <th>休憩時間計</th>
-        <th>休暇日数</th>
+        <th>休憩計</th>
+        <th>休暇計</th>
       </tr>
         <td><%= Attendance.sum_of_attendance_date(@attendances) %></td>
+        <td><%= Attendance.sum_of_attendance_time_month(@attendances) %></td>
         <td><%= Attendance.sum_of_over_time(@attendances) %></td>
         <td><%= Attendance.sum_of_break_time(@attendances) %></td>
         <td><%= Attendance.sum_of_holiday(@attendances) %></td>
