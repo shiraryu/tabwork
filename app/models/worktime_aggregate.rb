@@ -33,19 +33,17 @@ class WorktimeAggregate < ActiveRecord::Base
     results  #return
   end
 
-  def self.sum_of_constructiontime_sql
-    sql = <<-SQL
-    select attendances.date, sum(worktime_aggregates.constructiontime) from worktime_aggregates
-    join attendances
-    on worktime_aggregates.attendance_id = attendances.id
-    where worktime_aggregates.construction_id = 2
-    AND
-    where
-    group by attendances.date
-    ;
-    SQL
-    ActiveRecord::Base.connection.select_all(sql)
-    # result = self.select(sql)
-    # return result
-  end
+  #def self.sum_of_constructiontime_sql
+    #sql = <<-SQL
+    #select attendances.date, sum(worktime_aggregates.constructiontime) from worktime_aggregates
+    #join attendances
+    #on worktime_aggregates.attendance_id = attendances.id
+    #where worktime_aggregates.construction_id = 2
+    #AND
+    #where
+    #group by attendances.date
+    #;
+    #SQL
+    #ActiveRecord::Base.connection.select_all(sql)
+  #end
 end
