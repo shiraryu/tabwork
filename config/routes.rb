@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'worktime_aggregates/index'
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
   resources :workplaces do
